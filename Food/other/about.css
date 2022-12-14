@@ -1,0 +1,27 @@
+p {
+    font-family: Arial;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  .profile {
+    width: 200px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-right: 15px;
+  }
+  
+  .profile-picture {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 12px;
+  }
+  
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-bottom: 4px;
+  }
+  
