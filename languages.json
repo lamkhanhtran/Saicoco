@@ -1,0 +1,26 @@
+{
+    "languages": [
+        {
+            "fullName": "日本語",
+            "shortenName": "ja",
+            "question": "あなたはこの質問を理解できますか。",
+            "continue": "続ける"
+        },
+        {
+            "fullName": "English",
+            "shortenName": "en",
+            "question": "Can you understand this question?",
+            "continue": "CONTINUE"
+        }
+    ],
+    "ja": {
+        "business": "企業向け",
+        "customer": "お客様向け",
+        "others": "その他のユーザー向け"
+    },
+    "en": {
+        "business": "For Businesses",
+        "customer":"For Customers",
+        "others": "For Other Users"
+    }
+}

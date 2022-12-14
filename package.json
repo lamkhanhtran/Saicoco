@@ -2,15 +2,17 @@
   "name": "project",
   "version": "1.0.0",
   "description": "This is my first server",
-  "main": "demo_db_connection.js",
+  "main": "server.js",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "helmet": "^6.0.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.20"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node demo_db_connection.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC"
