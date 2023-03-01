@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Tabebiki</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../Business_Edit_Item_Page.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+    
+        <!----HEADER---->
+        <header>
+
+            <a href="../" class="logo">Tabebiki</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+        </header>
+        <!----HEADER---->
+
+
+        <!----ITEM_DATA---->
+        <form class="item" method="POST" enctype="multipart/form-data">
+
+            <div id="item-img">
+                
+                <label for="add-img">CHANGE IMAGE</label>
+                <input type="file" name="img" id="add-img" accept="image/*">
+                
+                <img id="img" src="../not-available.png" alt="Not available">
+            
+            </div>
+
+            <div id="item-format">
+            
+                <div id="item-data">
+
+                    <input type="text" name="image_name" id="image-name" hidden readonly>
+
+                    <label for="name">Item name:</label>
+                    <input type="text" name="itemName" id="name" placeholder="name" required>
+    
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" placeholder="quantity" min="1" required>
+    
+                    <label for="price">Price:</label>
+                    <input type="number" name="price" id="price" placeholder="price" required>
+                
+                </div>
+                <br>
+                <input class="btn" type="submit" value="Accept">
+            
+            </div>
+
+        </form>
+        <!----ITEM_DATA---->
+
+
+        <!----SCRIPTS---->
+        <script src="../Business_Edit_Item_Page.js"></script>
+        <!----SCRIPTS---->
+
+    </body>
+</html>

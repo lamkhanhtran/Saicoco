@@ -4,7 +4,7 @@
     }
 
 
-    #question{
+    #qstn{
         font-size: 40px;
         font-weight: 500;
         color: #8ca456;
@@ -23,7 +23,7 @@
     }
 
 
-    #question{
+    #qstn{
         font-size: 30px;
         font-weight: 500;
         color: #8ca456;
@@ -42,7 +42,7 @@
     }
 
 
-    #question{
+    #qstn{
         font-size: 20px;
         font-weight: 500;
         color: #8ca456;
@@ -86,16 +86,6 @@
     margin-top: 5vh;
 }
 
-.btn {
-    text-align: center;
-    min-width: fit-content;
-    padding: 5px 5px 5px 5px;
-    border-radius: 15px;
-    border: 4px ridge #8ca456;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
 .for-any-users {
     height: 50px;
     width: 30vw;
@@ -109,7 +99,7 @@
     width: 100vw;
 }
 
-#question{
+#qstn{
     font-weight: 500;
     color: #8ca456;
 }
@@ -125,9 +115,14 @@
     cursor: pointer;
 }
 
-#nxt {
+#btn {
     height: 30px;
     width: 20vw;
+    text-align: center;
     min-width: fit-content;
     padding: 5px 5px 5px 5px;
+    border-radius: 15px;
+    border: 4px ridge #8ca456;
+    cursor: pointer;
+    white-space: nowrap;
 }

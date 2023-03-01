@@ -90,7 +90,7 @@ section{
     color:#fff;
     border-radius: 0.5rem;
 }
-.btn::hover{
+.btn:hover{
     cursor:pointer;
     transform : scale(1.2)translateY(10px);
     transition : 0.4s;
@@ -109,7 +109,7 @@ section{
     color:var(--main-color);
     font-weight:600;
 }
-.about-text span::hover{
+.about-text span:hover{
     cursor:pointer;
     color : var(--main-color);
     transition : 0.4s;
@@ -137,11 +137,13 @@ section{
     transition : 0.4s;
 }
 .s-box{
+    width:250px;
+    white-space: normal;
     text-align: center;
     padding: 20px 30px;
 }
 .s-box img{
-    width:90px
+    width:90px;
 }
 .s-box h3{
     margin: 4px,0 10px;

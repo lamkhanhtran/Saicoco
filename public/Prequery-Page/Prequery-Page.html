@@ -2,7 +2,7 @@
 <html>
     <head>
         <!--This is the name of the page right now-->
-        <title> Home </title>
+        <title> Language Preference </title>
 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,11 +12,13 @@
     </head>
 
     <body>
-        <div id="container">
-
-        </div>
+        <form id="container" method="post" action="./language">
+            <p class="tag1 appearing" id="qstn"></p>
+            <select name="language" class="tag2" id="slc"></select>
+            <input type="submit" class="tag3" id="btn">
+        </form>
 
         <script src="Prequery-Page.js"></script> 
-        <!--<script src="test.js"></script>-->
+
     </body>
 </html>

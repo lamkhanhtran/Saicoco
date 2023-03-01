@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "private/v1-nodejs.js",
+        "use": "@now/node"
+      }
+    ]
+    
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Tabebiki</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="Product_Data_Page.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+    
+        <!----HEADER---->
+        <header>
+
+            <a href="./" class="logo">Tabebiki</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+            <a href="./access" class="btn">Restaurant Login</a>
+
+        </header>
+        <!----HEADER---->
+
+
+        <!----ITEM_DATA---->
+        <section class="item">
+
+            <div id="item-img">
+                <img id="img" src="not-available.png" alt="Not available">
+            </div>
+
+            <div id="item-data">
+                <h1 id="h1">NOT AVAILABLE</h1>
+                <p id="p">Item that you are searching for may not be available at the moment.</p>
+            </div>
+
+        </section>
+        <!----ITEM_DATA---->
+
+
+        <!----PHONE_NUMBER_INSERT---->
+        <form style="display: none;" id="give-phone" method="POST">
+
+            <fieldset>
+                <h2>PLEASE GIVE US YOUR PHONE NUMBER</h2>
+                <label for="phonenumber">PHONE NUMBER: </label>
+                <input name="phonenumber" id="phonenumber" placeholder="Ex. 012345678901" pattern="[0-9]{10,14}" required> <br>
+                <input type="submit" class="btn" value="CONTINUE">
+            </fieldset>
+
+        </form>
+        <!----PHONE_NUMBER_INSERT---->
+
+
+        <!----SCRIPTS---->
+        <script src="Product_Data_Page.js"></script>
+        <!----SCRIPTS---->
+
+    </body>
+</html>
