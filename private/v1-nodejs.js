@@ -123,6 +123,27 @@ router.get( '/ITEMSELLING/:uid/:iid?', function( request, response ) {          
 } );                                                                                                                                            //
                                                                                                                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                                                //
+router.get( '/ORDERRECEIVED/:uid', function( request, response ) {                                                                              //
+                                                                                                                                                //
+    const sql = 'SELECT Orders.id, Orders.time, Users.phoneNumber, Items.itemName '
+              + 'FROM Orders, Users, Sellers, Items '
+              + 'WHERE Orders.userId=Users.id and Orders.itemId=Items.id and Items.sellerId=Sellers.id and Sellers.id=?';                                                                               //
+                                                                                                                                                //
+    //console.log(sql);                                                                                                                         //
+                                                                                                                                                //
+    connection.execute( sql, [ request.params.uid ], function( error, result ) {                                                                                                             //
+        if( error ) {                                                                                                                           //
+            console.log( error );                                                                                                               //
+            return;                                                                                                                             //
+        }                                                                                                                                       //
+        response.header( 'Content-Type', 'application/json' );                                                                                  //
+        response.json( result );                                                                                                                //
+    } );                                                                                                                                        //
+                                                                                                                                                //
+} );                                                                                                                                            //
+                                                                                                                                                //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -360,7 +381,7 @@ router.post( '/preorder', function( request, response ) {                       
                                                                                                                 //
                         response.redirect( '/itemordered?code=' + code );                                       //
                     } );                                                                                        //
-                } );                                                                                            //                                                                                           //
+                } );                                                                                            //
             } );                                                                                                //
                                                                                                                 //
         }                                                                                                       //
@@ -501,26 +522,26 @@ router.post( '/business/edited',                                                
         const insertData = ( image_data != undefined ? [                                                        //
             image_data.filename,                                                                                //
             body_data.itemName,                                                                                 //
-            body_data.quantity,
-            body_data.price,
-            request.query.iid
-        ] : [
-            body_data.itemName,
-            body_data.quantity,
-            body_data.price,
-            request.query.iid
-        ] );
-        console.log( sql );
-        console.log( insertData );
+            body_data.quantity,                                                                                 //
+            body_data.price,                                                                                    //
+            request.query.iid                                                                                   //
+        ] : [                                                                                                   //
+            body_data.itemName,                                                                                 //
+            body_data.quantity,                                                                                 //
+            body_data.price,                                                                                    //
+            request.query.iid                                                                                   //
+        ] );                                                                                                    //
+        //console.log( sql );                                                                                   //
+        //console.log( insertData );                                                                            //
                                                                                                                 //
-        connection.execute( sql, insertData, function( error, result ) {                                                                              //
-            if( error ) {                                                                                           //
-                console.log( error );                                                                               //
-                return;                                                                                             //
-            }                                                                                                       //
+        connection.execute( sql, insertData, function( error, result ) {                                        //
+            if( error ) {                                                                                       //
+                console.log( error );                                                                           //
+                return;                                                                                         //
+            }                                                                                                   //
                                                                                                                 //
-            response.redirect( '/business?usr_c=' + request.query.usr_c + '&uid=' + request.query.uid );            //
-        } );                                                                                                        //
+            response.redirect( '/business?usr_c=' + request.query.usr_c + '&uid=' + request.query.uid );        //
+        } );                                                                                                    //
                                                                                                                 //
     
 } );                                                                                                            //

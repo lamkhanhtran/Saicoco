@@ -8,9 +8,15 @@
                     return { ...response, [ data[ 0 ] ] : data[ 1 ] };
                 }, { } );
 
-    var container = document.getElementsByClassName( "service-container" )[ 0 ];
+    var container = document.getElementsByClassName( "containers" );
 
     const items_data = await fetch( "./ITEMSELLING/" + queries[ "uid" ] ).then( ( response ) => {
+
+        return response.json();
+
+    } );
+
+    const orders_data = await fetch( "./ORDERRECEIVED/" + queries[ "uid" ] ).then( ( response ) => {
 
         return response.json();
 
@@ -21,7 +27,7 @@
 
     if( items_data.length ){
 
-        container.removeChild( container.children[ 0 ] );
+        container[ 0 ].removeChild( container[ 0 ].children[ 0 ] );
 
         for( var i = 0; i < items_data.length; i++ ) {
 
@@ -43,7 +49,36 @@
                         + "<br>Price: " + items_data[ i ].price;
             item.appendChild( p );
 
-            container.appendChild( item );
+            container[ 0 ].appendChild( item );
+
+        }
+    
+    }
+
+    if( orders_data.length ){
+
+        for( var i = 0; i < orders_data.length; i++ ) {
+
+            var table_row = document.createElement( "tr" );
+            //item.setAttribute( "href", "/business/item?usr_c=" + queries[ "usr_c" ] + "&uid=" + queries[ "uid" ] + "&iid=" + items_data[ i ].id );
+
+            var td1 = document.createElement( "td" );
+            td1.innerHTML = i + 1;
+            table_row.appendChild( td1 );
+
+            var td2 = document.createElement( "td" );
+            td2.innerHTML = orders_data[ i ].itemName;
+            table_row.appendChild( td2 );
+
+            var td3 = document.createElement( "td" );
+            td3.innerHTML = orders_data[ i ].phoneNumber;
+            table_row.appendChild( td3 );
+
+            var td4 = document.createElement( "td" );
+            td4.innerHTML = orders_data[ i ].time;
+            table_row.appendChild( td4 );
+
+            container[ 1 ].children[ 0 ].appendChild( table_row );
 
         }
     

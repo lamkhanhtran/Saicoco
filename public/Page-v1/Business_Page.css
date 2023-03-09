@@ -54,10 +54,6 @@ header {
     display             : none;
 }
 
-section {
-    padding             : 70px 17vw;
-}
-
 .btn {
     display             : inline-block;
     padding             : 10px 20px;
@@ -72,12 +68,16 @@ section {
     transition          : 0.4s;
 }
 
-.services {
+section {
+    padding             : 70px 17vw;
     display             : grid;
-    grid-template-rows  : repeat( auto-fit, minmax( 120px,auto ) );
+    grid-template-rows  : repeat( auto-fit, minmax( 40px, auto ) );
     grid-gap            : 1.5rem;
-    margin-top          : 4rem;
     align-items         : center;
+}
+
+.items-selling {
+    margin-top          : 4rem;
 }
 
 .heading {
@@ -85,11 +85,19 @@ section {
     font-weight         : 600;
 }
 
-.service-container {
+.containers {
     background          : var( --bg-color2 );
     align-items         : center;
     white-space         : nowrap;
+}
+
+#items-container {
     overflow-x          : scroll;
+}
+
+#orders-container {
+    overflow-y          : scroll;
+
 }
 
 .item-box {
@@ -125,4 +133,8 @@ section {
 .item-box p {
     color               : var( --text-color );
     line-height         : 1.7;
+}
+
+.order-table {
+    width               : 100%;
 }
