@@ -17,13 +17,13 @@ const helmet = require( 'helmet' );                             // Securing ‘e
 const PORT = 8082;                                              // The port that this page is using
 
 ////////////////////////////////////////////////////////
-//const prequery_route = require( './Prequery-user' );//
+const prequery_route = require( './Prequery-user' );//
 //const normal_route = require( './Normal-user' );    //
 //const business_route = require( './Business-user' );//
 //const customer_route = require( './Customer-user' );//
 ////////////////////////////////////////////////////////
 
-const page_route_v1 = require( './v1-nodejs.js' );              // Contains router GET and POST request for the page itself
+//const page_route_v1 = require( './v1-nodejs.js' );              // Contains router GET and POST request for the page itself
 
 
 const app = express( );                                         // Set up the app to be the main server itself
@@ -65,13 +65,13 @@ app.use( helmet( ) );                                           // protect https
 /////////////////////////////////////////////////
 //app.use( /^\/..\/business/, business_route );//
 //app.use( /^\/../, normal_route );            //
-//app.use( '/', prequery_route );              //
+app.use( '/', prequery_route );              //
 /////////////////////////////////////////////////
 
 //app.use( '/*/customer', customer_route );
 //app.use( '/*/others', others_route );
 
-app.use( '/', page_route_v1 );                                  // Using POST and GET request from the main server itself
+//app.use( '/', page_route_v1 );                                  // Using POST and GET request from the main server itself
 
 
 app.all( '*', ( req, res ) => {

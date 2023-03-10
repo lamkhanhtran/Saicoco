@@ -14,7 +14,7 @@ const data = require( '../languages.json' );                                    
 
 //////////////////////////////////////////////////////////////////////////////////////////////
                                                                                             //
-router.use( cookieParser( ) );                                                              //
+//router.use( cookieParser( ) );                                                              //
 router.use( express.static(                                                                 //
     path.join( __dirname, '..', 'public', 'Prequery-Page' )                                 //
 ) );                                                                                        //
@@ -36,10 +36,10 @@ router.use( ( request, response, next ) => {                                    
                                                                                             //
 router.get( '/', function( request, response ) {                                            //
                                                                                             //
-    const mapCookies = response.locals.cookie;                                              //
-    if( 'lge' in mapCookies )                                                               //
-        response.redirect( '/' + mapCookies.lge );                                          //
-    else                                                                                    //
+    //const mapCookies = response.locals.cookie;                                              //
+    //if( 'lge' in mapCookies )                                                               //
+    //    response.redirect( '/' + mapCookies.lge );                                          //
+    //else                                                                                    //
         response.sendFile(                                                                  //
             path.join( __dirname, '..', 'public', 'Prequery-Page', 'Prequery-Page.html' )   //
         );                                                                                  //
