@@ -1,6 +1,6 @@
                                                                                             //
 const express = require( 'express' );                                                       //
-const cookieParser = require( 'cookie-parser' );                                            //
+//const cookieParser = require( 'cookie-parser' );                                            //
 const path = require( 'path' );                                                             //
 const router = express.Router( );                                                           //
                                                                                             //
@@ -40,9 +40,10 @@ router.get( '/', function( request, response ) {                                
     //if( 'lge' in mapCookies )                                                               //
     //    response.redirect( '/' + mapCookies.lge );                                          //
     //else                                                                                    //
-        response.sendFile(                                                                  //
-            path.join( __dirname, '..', 'public', 'Prequery-Page', 'Prequery-Page.html' )   //
-        );                                                                                  //
+    //    response.sendFile(                                                                  //
+    //        path.join( __dirname, '..', 'public', 'Prequery-Page', 'Prequery-Page.html' )   //
+    //    );                                                                                  //
+    response.send( "welcome to server");
                                                                                             //
 } );                                                                                        //
                                                                                             //
