@@ -1,6 +1,6 @@
                                                                                             //
 const express = require( 'express' );                                                       //
-//const cookieParser = require( 'cookie-parser' );                                            //
+const cookieParser = require( 'cookie-parser' );                                            //
 const path = require( 'path' );                                                             //
 const router = express.Router( );                                                           //
                                                                                             //
@@ -14,7 +14,7 @@ const data = require( '../languages.json' );                                    
 
 //////////////////////////////////////////////////////////////////////////////////////////////
                                                                                             //
-//router.use( cookieParser( ) );                                                              //
+router.use( cookieParser( ) );                                                              //
 router.use( express.static(                                                                 //
     path.join( __dirname, '..', 'public', 'Prequery-Page' )                                 //
 ) );                                                                                        //
@@ -36,14 +36,13 @@ router.use( ( request, response, next ) => {                                    
                                                                                             //
 router.get( '/', function( request, response ) {                                            //
                                                                                             //
-    //const mapCookies = response.locals.cookie;                                              //
-    //if( 'lge' in mapCookies )                                                               //
-    //    response.redirect( '/' + mapCookies.lge );                                          //
-    //else                                                                                    //
-    //    response.sendFile(                                                                  //
-    //        path.join( __dirname, '..', 'public', 'Prequery-Page', 'Prequery-Page.html' )   //
-    //    );                                                                                  //
-    response.send( "welcome to server");
+    const mapCookies = response.locals.cookie;                                              //
+    if( 'lge' in mapCookies )                                                               //
+        response.redirect( '/' + mapCookies.lge );                                          //
+    else                                                                                    //
+        response.sendFile(                                                                  //
+            path.join( __dirname, '..', 'public', 'Prequery-Page', 'Prequery-Page.html' )   //
+        );                                                                                  //
                                                                                             //
 } );                                                                                        //
                                                                                             //
@@ -66,7 +65,7 @@ router.post( '/language', function( request, response ) {                       
                                                                                             //
     const language = request.body.language;                                                 //
     console.log( language );                                                                //
-    //response.cookie( 'lge', language );                                                     //
+    response.cookie( 'lge', language );                                                     //
     response.redirect( '/' + language );                                                    //
                                                                                             //
 } );                                                                                        //
