@@ -66,7 +66,7 @@ router.post( '/language', function( request, response ) {                       
                                                                                             //
     const language = request.body.language;                                                 //
     console.log( language );                                                                //
-    response.cookie( 'lge', language );                                                     //
+    //response.cookie( 'lge', language );                                                     //
     response.redirect( '/' + language );                                                    //
                                                                                             //
 } );                                                                                        //

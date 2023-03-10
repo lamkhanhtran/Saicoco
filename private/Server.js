@@ -5,19 +5,19 @@ const express = require( 'express' );                           // Set up the pa
 //const cookieParser = require( 'cookie-parser' );      // Set up cookie to sites//
 ///////////////////////////////////////////////////////////////////////////////////
 
-const https = require( 'https' );                               // Allow node.js to transfer file into http
+//const https = require( 'https' );                               // Allow node.js to transfer file into http
 
 const fs = require( 'fs' );                                     // Read files
 
 const path = require( 'path' );                                 // Join directory and file name together
 
-const helmet = require( 'helmet' );                             // Securing ‘express’ applications by setting various HTTP headers
+//const helmet = require( 'helmet' );                             // Securing ‘express’ applications by setting various HTTP headers
                                                                 // It helps in mitigating cross-site scripting attacks, misissued SSL certificates, etc.
 
 const PORT = 8082;                                              // The port that this page is using
 
 ////////////////////////////////////////////////////////
-const prequery_route = require( './Prequery-user' );//
+//const prequery_route = require( './Prequery-user' );//
 //const normal_route = require( './Normal-user' );    //
 //const business_route = require( './Business-user' );//
 //const customer_route = require( './Customer-user' );//
@@ -27,7 +27,7 @@ const prequery_route = require( './Prequery-user' );//
 
 
 const app = express( );                                         // Set up the app to be the main server itself
-
+/*
 var server = https.createServer( 
 
     // Provide the private key and public key to the server by reading each
@@ -39,11 +39,11 @@ var server = https.createServer(
     app
 
 );                                                              // Set up the server that is secured by the private key and the public key
+*/
 
-
-app.use( express.urlencoded( { extended: true } ) );            // We need express.urlencoded and express.json to
-app.use( express.json( ) );                                     // transform data received by server to become understandable by the server
-app.use( helmet( ) );                                           // protect https server from some ways of hacking
+//app.use( express.urlencoded( { extended: true } ) );            // We need express.urlencoded and express.json to
+//app.use( express.json( ) );                                     // transform data received by server to become understandable by the server
+//app.use( helmet( ) );                                           // protect https server from some ways of hacking
 
 //////////////////////////////////////////////////////////////////////////
 //app.use( ( request, response, next ) => {                             //
@@ -65,7 +65,7 @@ app.use( helmet( ) );                                           // protect https
 /////////////////////////////////////////////////
 //app.use( /^\/..\/business/, business_route );//
 //app.use( /^\/../, normal_route );            //
-app.use( '/', prequery_route );              //
+//app.use( '/', prequery_route );              //
 /////////////////////////////////////////////////
 
 //app.use( '/*/customer', customer_route );
