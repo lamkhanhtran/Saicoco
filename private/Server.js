@@ -106,7 +106,7 @@ con.execute( sql, ["White"], function( error, result ) { // , fields) {
 } );
 */
 
-
+/*
 
 server.listen( PORT, function( error ) {                        // Listening through the port that we declared earlier
 
@@ -115,7 +115,7 @@ server.listen( PORT, function( error ) {                        // Listening thr
     console.log( 'Server listening on PORT', PORT );            // Printing that the server is created
 
 } );
-
+*/
 /*const express = require('express');
 const path = require('path');
 const app = express();
@@ -126,7 +126,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (request, response) {
     response.sendFile(path.join(__dirname, 'public/Users-types.html'))
 });
-
+*/
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
-});*/
+});
