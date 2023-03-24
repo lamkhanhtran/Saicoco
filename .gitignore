@@ -1,4 +1,5 @@
 node_modules
 target
 *.pem
+public/Page-v1/*.png
 .vscode

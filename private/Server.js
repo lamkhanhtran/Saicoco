@@ -14,8 +14,6 @@ const path = require( 'path' );                                 // Join director
 const helmet = require( 'helmet' );                             // Securing ‘express’ applications by setting various HTTP headers
                                                                 // It helps in mitigating cross-site scripting attacks, misissued SSL certificates, etc.
 
-const HOST = '0.0.0.0';                                         // To allow which host it can listen on
-
 const PORT = 8082;                                              // The port that this page is using
 
 ////////////////////////////////////////////////////////
@@ -30,7 +28,7 @@ const page_route_v1 = require( './v1-nodejs.js' );              // Contains rout
 
 const app = express( );                                         // Set up the app to be the main server itself
 
-/*var server = https.createServer( 
+var server = https.createServer( 
 
     // Provide the private key and public key to the server by reading each
     // file's content with the readFileSync() method.
@@ -41,7 +39,6 @@ const app = express( );                                         // Set up the ap
     app
 
 );                                                              // Set up the server that is secured by the private key and the public key
-*/
 
 app.use( express.urlencoded( { extended: true } ) );            // We need express.urlencoded and express.json to
 app.use( express.json( ) );                                     // transform data received by server to become understandable by the server
@@ -73,7 +70,7 @@ app.use( helmet( ) );                                           // protect https
 //app.use( '/*/customer', customer_route );
 //app.use( '/*/others', others_route );
 
-//app.use( '/', page_route_v1 );                                  // Using POST and GET request from the main server itself
+app.use( '/', page_route_v1 );                                  // Using POST and GET request from the main server itself
 
 
 app.all( '*', ( req, res ) => {
@@ -109,7 +106,6 @@ con.execute( sql, ["White"], function( error, result ) { // , fields) {
 */
 
 
-/*
 server.listen( PORT, function( error ) {                        // Listening through the port that we declared earlier
 
     if( error )                                                 // If cannot listen, return error
@@ -128,7 +124,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function (request, response) {
     response.sendFile(path.join(__dirname, 'public/Users-types.html'))
 });
-*/
+
 app.listen(PORT, HOST, () => {
     console.log(`Example app listening on port ${PORT}`)
 });
+*/
