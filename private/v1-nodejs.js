@@ -417,7 +417,7 @@ router.post( '/signup', function( request, response ) {                         
                     console.log( error );                                                                       //
                     return;                                                                                     //
                 }                                                                                               //
-                console.log( result.insertId );                                                                 //
+                //console.log( result.insertId );                                                                 //
                 response.redirect( '/business?usr_c=' + hashData( data.phonenumber + '000' )                    //
                                  + '&uid=' + result.insertId );                                                 //
             } );                                                                                                //
@@ -443,12 +443,12 @@ router.post( '/signin', function( request, response ) {                         
         }                                                                                                       //
                                                                                                                 //
         if( result != undefined && result.length > 0 ) {                                                        //
-            console.log( result );                                                                              //
+            //console.log( result );                                                                              //
             response.redirect( '/business?usr_c=' + hashData( data.phonenumber + '000' )                        //
                              + '&uid=' + result[ 0 ].id );                                                      //
         }                                                                                                       //
         else {                                                                                                  //
-            console.log( result );                                                                              //
+            //console.log( result );                                                                              //
             response.redirect( '/access?denied=1' );                                                            //
         }                                                                                                       //
     } );                                                                                                        //

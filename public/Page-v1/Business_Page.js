@@ -60,7 +60,6 @@
         for( var i = 0; i < orders_data.length; i++ ) {
 
             var table_row = document.createElement( "tr" );
-            //item.setAttribute( "href", "/business/item?usr_c=" + queries[ "usr_c" ] + "&uid=" + queries[ "uid" ] + "&iid=" + items_data[ i ].id );
 
             var td1 = document.createElement( "td" );
             td1.innerHTML = i + 1;

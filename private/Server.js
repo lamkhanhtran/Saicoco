@@ -17,7 +17,7 @@ const helmet = require( 'helmet' );                             // Securing ‘e
 const PORT = 8082;                                              // The port that this page is using
 
 ////////////////////////////////////////////////////////
-const prequery_route = require( './Prequery-user' );//
+//const prequery_route = require( './Prequery-user' );//
 //const normal_route = require( './Normal-user' );    //
 //const business_route = require( './Business-user' );//
 //const customer_route = require( './Customer-user' );//
