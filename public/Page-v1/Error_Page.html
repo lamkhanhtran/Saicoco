@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- Name of the tab -->
-        <title>Home | Tabebiki</title>
+        <title>Error | Tabebiki</title>
         
         <!-- Character sets you can use -->
         <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="Overall_style.css">
 
         <!-- Specific style css -->
-        <link rel="stylesheet" type="text/css" href="Product_Ordered_Page.css">
+        <link rel="stylesheet" type="text/css" href="Error_Page.css">
 
         <!-- Free icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,47 +35,28 @@
         <!-- Using the font in this page to style our page -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
     </head>
-
+    
     <body>
-        <!----DISPLAY---->
-        <section class="display-container">
-            <!-- Pre-ordered item shown -->
-            <section class="item box">
-                <!-- Image and name -->
-                <div class="item-data">
-                    <!-- Image -->
-                    <img id="img" src="" alt="">
 
-                    <!-- Name -->
-                    <h3 id="name" class="heading"></h3>
-                </div>
+        <!----ERROR_SECTION---->
+        <section class="error">
+            <!-- Error icon -->
+            <div id="error-icon">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            </div>
 
-                <!-- Our gratitude -->
-                <p id="p"></p>
-            </section>
-
-            <!-- Options recommend -->
-            <section class="options-display">
-                <!-- Recommend heading -->
-                <h3 class="heading">Recommend items</h3>
-
-                <!-- Display recommend options -->
-                <div class="box" id="recommend">
-                    <p>Sorry but we don't have any recommendations at the moment, please check in next time.</p>
-                </div>
-
-                <!-- Popular heading -->
-                <h3 class="heading">Popular items</h3>
-
-                <!-- Display popular options -->
-                <div class="box" id="popular">
-                    <p>Sorry but we don't have any trending items at the moment, please check in next time.</p>
-                </div>
-            </section>
+            <!-- Error message -->
+            <div class="error-text">
+                <h2>PAGE NOT FOUND!</h2>
+                <h3>We're sorry to not found the requested page</h3>
+                <p>Browse our <a href="./buying">listing products</a></p>
+                <p>Try <a href="./access">selling your products</a></p>
+                <p>If something is out of normal, please <a href="./contact">contact us</a></p>
+            </div>
         </section>
 
         <!----SCRIPTS---->
         <script src="Overall_function.js"></script>
-        <script src="Product_Ordered_Page.js"></script>
+        <script src="Error_Page.js"></script>
     </body>
 </html>

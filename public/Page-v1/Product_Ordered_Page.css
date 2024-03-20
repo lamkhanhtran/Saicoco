@@ -1,57 +1,53 @@
-@import "Overall_style.css";
-
-.login{
-    color : var(--text-color);
-    font-size: 1.1rem;
-    padding : 10px 1.2vw;
-    font-weight: 500;
+.heading {
+    color                           : var( --main-color );
+    font-weight                     : 600;
+    padding                         : 10px 0px;
 }
 
-.login:hover{
-    cursor: pointer;
-    color: var( --main-color );
-    transition: 0.4s;
+.box {
+    background                      : var( --bg-color3 );
+    border-radius                   : 6px;
+    box-shadow                      : 0 2px 4px 4px rgba(255, 255, 255, 0.313);
+    width                           : 100%;
+    padding                         : 10px 30px 20px;
 }
 
-#menu-icon{
-    font-size: 2rem;
-    cursor:pointer;
-    display:none;
+/*************************************************/
+/* Displaying section */
+
+.display-container {
+    display                         : flex;
+    flex-direction                  : column;
+    grid-gap                        : 50px;
+    margin                          : 0 auto;
+    max-width                       : 1200px;
+    padding                         : 100px 20px 50px;
 }
 
-section{
-    padding : 70px 17vw;
+/*************************************************/
+/* Item section */
+
+.item {
+    display                         : flex;
+    flex-direction                  : column;
+    grid-gap                        : 1.5rem;
+    width                           : 100%;
 }
 
-.item{
-    width : 100%;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
-    grid-gap: 1.5rem;
-    align-items: center;
+.item-data {
+    display                         : flex;
+    grid-gap                        : 50px;
 }
 
-#item-img img{
-    aspect-ratio: 2 / 3;
-    width: 400px;
+.item-data img {
+    aspect-ratio                    : 20 / 19;
+    width                           : 100px;
 }
 
-#item-data h1{
-    font-size: var(--big-font);
-    color: var(--main-color);
-}
+/*************************************************/
+/* Recommend section */
 
-.btn{
-    display: inline-block;
-    padding : 10px 20px;
-    background : var(--main-color);
-    color:#fff;
-    border-radius: 0.5rem;
-}
-
-.btn:hover{
-    cursor:pointer;
-    transform : scale(1.2)translateY(10px);
-    transition : 0.4s;
+.options-display {
+    min-width                       : 100%;
+    width                           : 100%;    
 }

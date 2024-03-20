@@ -18,24 +18,16 @@
 
     if( item_data.length ) {
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-        var img = document.getElementById( "img" );
+        const img = document.getElementById( "img" );
         img.setAttribute( "src", item_data[ 0 ].image );
         img.setAttribute( "alt", item_data[ 0 ].itemName );
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+        const name = document.getElementById( "name" );
+        name.innerHTML = item_data[ 0 ].itemName;
 
-        var h1 = document.getElementById( "h1" );
-        h1.innerHTML = item_data[ 0 ].itemName;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-        var p = document.getElementById( "p" );
+        const p = document.getElementById( "p" );
         p.innerHTML = "Your order's id is: " + item_data[ 0 ].id
                     + "<br>Thank you for ordering! We hope to see you again.";
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 

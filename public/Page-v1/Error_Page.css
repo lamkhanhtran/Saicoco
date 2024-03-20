@@ -1,0 +1,58 @@
+/* Error section */
+
+.error {
+    align-items                 : center;
+    display                     : flex;
+    grid-gap                    : 10vw;
+    justify-content             : center;
+    height                      : 100vh;
+}
+
+#error-icon {
+    color                       : #fff;
+    font-size                   : 15vw;
+}
+
+.error-text {
+    margin                      : 16px;
+}
+
+.error-text h3 {
+    margin-bottom               : 1.5rem;
+}
+
+.error-text p {
+    margin-bottom               : 10px;
+}
+
+/*************************************************/
+/* For tablet display */
+
+@media screen and ( max-width: 780px ) {
+    
+    .error-text h2 {
+        font-size               : var( --h3-font );
+    }
+
+    .error-text h3 {
+        font-size               : var( --p-font );
+    }
+
+}
+
+/*************************************************/
+/* For mobile display */
+
+@media screen and ( max-width: 450px ) {
+    
+    .error {
+        flex-direction          : column;
+    }
+
+    #error-icon {
+        font-size               : 20vw;
+    }
+
+}
+
+/*************************************************/

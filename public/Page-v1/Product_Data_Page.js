@@ -18,48 +18,44 @@
 
     if( item_data.length ) {
 
-        var data_container = document.getElementById( "item-data" );
-        var phone_insert = document.getElementById( "give-phone" );
+        const phone_insert = document.getElementsByClassName( "pop-up" )[ 0 ];
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+        const name = document.getElementById( "name" );
+        name.innerHTML = item_data[ 0 ].itemName;
 
-        var img = document.getElementById( "img" );
+        const img = document.getElementById( "img" );
         img.setAttribute( "src", item_data[ 0 ].image );
         img.setAttribute( "alt", item_data[ 0 ].itemName );
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+        const pageName = document.getElementsByTagName( "title" )[ 0 ];
+        pageName.innerHTML = item_data[ 0 ].itemName + pageName.innerHTML;
 
-        var h1 = document.getElementById( "h1" );
-        h1.innerHTML = item_data[ 0 ].itemName;
+        const grid = document.getElementsByClassName( "information-grid" )[ 0 ];
+        grid.innerHTML = "<p>Quantity: " + item_data[ 0 ].quantity + "</p>"
+                       + "<p>Price: " + item_data[ 0 ].price + "</p>"
+                       + "<p>Restaurant: " + item_data[ 0 ].companyName + "</p>"
+                       + "<p>Phone number: " + item_data[ 0 ].phoneNumber + "</p>";
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-        var p = document.getElementById( "p" );
-        p.innerHTML = "Quantity: " + item_data[ 0 ].quantity
-                    + "<br>Price: " + item_data[ 0 ].price
-                    + "<br>Restaurant: " + item_data[ 0 ].companyName
-                    + "<br>Phone number: " + item_data[ 0 ].phoneNumber;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        var preorder_btn = document.createElement( "button" );
-        preorder_btn.className = "btn";
-        preorder_btn.innerText = "Pre-order";
+        const preorder_btn = document.getElementById( "order" );
         preorder_btn.addEventListener( "click", function( ) {
 
             phone_insert.setAttribute( "style", "display: flex;" );
             
         } );
-        data_container.appendChild( preorder_btn );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        var continue_btn = document.getElementsByClassName( "btn" )[ 2 ];
-        continue_btn.addEventListener( "click", function( ) {
+        const phone_btns = document.getElementsByClassName( "pre-order" );
+        phone_btns[ 0 ].addEventListener( "click", function( ) {
 
             phone_insert.setAttribute( "action", "./preorder?id=" + queries[ "id" ] );
             
         } );
+        phone_btns[ 1 ].addEventListener( "click", function( ) {
+
+            phone_insert.setAttribute( "action", "" );
+            phone_insert.setAttribute( "style", "display: none;" );
+            
+        } );
+
 
     }
 

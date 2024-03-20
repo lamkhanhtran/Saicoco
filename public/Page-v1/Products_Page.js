@@ -1,12 +1,39 @@
 (async () => {
 
-    var container =  document.getElementsByClassName( "service-container" )[ 0 ];
+    const search = document.getElementById( "search-name" );
+    const reset = document.getElementById( "reset" );
+    const container = document.getElementsByClassName( "products" )[ 0 ];
+    var items_data;
 
-    const items_data = await fetch( "./PRODUCTS" ).then( ( response ) => {
+    const queries = window.location.search
+                .replace( "?", "" )
+                .split( "&" )
+                .reduce( ( response, item_datum ) => {
+                    const data = item_datum.split( "=" );
+                    return { ...response, [ data[ 0 ] ] : data[ 1 ] };
+                }, { } );
 
-        return response.json();
+    if( "search" in queries ) {
 
-    } );
+        document.title = "Search: \"" + queries[ "search" ] + "\" " + document.title;
+        search.value = queries[ "search" ];
+        items_data = await fetch( "./PRODUCTS/" + queries[ "search" ] ).then( ( response ) => {
+
+            return response.json();
+    
+        } );
+
+    }
+    else {
+
+        document.title = "Products " + document.title;
+        items_data = await fetch( "./PRODUCTS" ).then( ( response ) => {
+
+            return response.json();
+    
+        } );
+    
+    }
 
     if( items_data.length ){
 
@@ -37,5 +64,9 @@
         }
     
     }
+
+    reset.addEventListener( "click", function() {
+        search.value = "";
+    } );
 
 } )( );

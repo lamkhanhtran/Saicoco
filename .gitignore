@@ -3,3 +3,4 @@ target
 *.pem
 public/Page-v1/img*.png
 .vscode
+*.txt

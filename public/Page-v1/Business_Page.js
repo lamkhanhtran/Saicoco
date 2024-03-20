@@ -74,7 +74,7 @@
             table_row.appendChild( td3 );
 
             var td4 = document.createElement( "td" );
-            td4.innerHTML = orders_data[ i ].time;
+            td4.innerHTML = orders_data[ i ].time.slice( 0, 19 ).replace( 'T', ' ' );
             table_row.appendChild( td4 );
 
             container[ 1 ].children[ 0 ].appendChild( table_row );

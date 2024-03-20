@@ -1,64 +1,117 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>Tabebiki</title>
+        <!-- Name of the tab -->
+        <title> | Tabebiki</title>
+        
+        <!-- Character sets you can use -->
         <meta charset="UTF-8">
+
+        <!-- Provides an HTTP header for the information/value of the content attribute -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Setting the viewport to make your website look good on all devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!----
+            <meta name="keywords" content="tabebiki">  Helps your page able to be found by the keywords 
+        ---->
+        
+        <!-- General style css -->
+        <link rel="stylesheet" type="text/css" href="Overall_style.css">
+
+        <!-- Specific style css -->
         <link rel="stylesheet" type="text/css" href="Product_Data_Page.css">
+
+        <!-- Free icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
-    
+
+        <!-- Using the font in this page to style our page -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">    
     </head>
     
     <body>
-    
-        <!----HEADER---->
-        <header>
+        <!----DISPLAY---->
+        <section class="display-container">
+            <!-- Options recommend -->
+            <section class="options-display">
+                <!-- Recommend heading -->
+                <h3 class="heading">Recommend items</h3>
 
-            <a href="./" class="logo">Tabebiki</a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-            <a href="./access" class="btn">Restaurant Login</a>
+                <!-- Display recommend options -->
+                <div class="box" id="recommend">
+                    <p>Sorry but we don't have any recommendations at the moment, please check in next time.</p>
+                </div>
 
-        </header>
-        <!----HEADER---->
+                <!-- Popular heading -->
+                <h3 class="heading">Popular items</h3>
 
+                <!-- Display popular options -->
+                <div class="box" id="popular">
+                    <p>Sorry but we don't have any trending items at the moment, please check in next time.</p>
+                </div>
+            </section>
 
-        <!----ITEM_DATA---->
-        <section class="item">
+            <!----Products showcase---->
+            <section class="item">
+                <!-- Display the name of the item -->
+                <div class="box">
+                    <h2 id="name"></h2>
+                </div>
 
-            <div id="item-img">
-                <img id="img" src="not-available.png" alt="Not available">
-            </div>
+                <!-- Display all information about the item -->
+                <div class="box item-data">
+                    <!-- Display the image of the item -->
+                    <img id="img" src="" alt="">
 
-            <div id="item-data">
-                <h1 id="h1">NOT AVAILABLE</h1>
-                <p id="p">Item that you are searching for may not be available at the moment.</p>
-            </div>
+                    <!-- Display company, price, quantity of the item -->
+                    <div class="item-information">
+                        <!-- All information will be in here -->
+                        <div class="information-grid"></div>
 
+                        <!-- Choose to order button -->
+                        <button class="btn" id="order">Pre-order</button>
+                    </div>
+                </div>
+            </section>
         </section>
-        <!----ITEM_DATA---->
-
 
         <!----PHONE_NUMBER_INSERT---->
-        <form style="display: none;" id="give-phone" method="POST">
-
-            <fieldset>
-                <h2>PLEASE GIVE US YOUR PHONE NUMBER</h2>
-                <label for="phonenumber">PHONE NUMBER: </label>
-                <input name="phonenumber" id="phonenumber" placeholder="Ex. 012345678901" pattern="[0-9]{10,14}" required> <br>
-                <input type="submit" class="btn" value="CONTINUE">
-            </fieldset>
-
-        </form>
-        <!----PHONE_NUMBER_INSERT---->
-
-
+        <div style="display: none;" class="pop-up">
+            <!--Box of phone insertion -->
+            <div class="pop-up-box">
+                <!-- Field form -->
+                <form method="POST">
+                    <fieldset>
+                        <!-- Word display -->
+                        <h3>PLEASE LEAVE YOUR PHONE NUMBER HERE</h2>
+    
+                        <!-- Label for phone number -->
+                        <label for="phonenumber">PHONE NUMBER: </label>
+    
+                        <!-- Input for phone number -->
+                        <input name="phonenumber" id="phonenumber" placeholder="Ex. 012345678901" pattern="[0-9]{10,14}" required>
+    
+                        <!-- Continue button -->
+                        <input type="submit" class="btn pre-order" value="CONTINUE">
+                    </fieldset>
+                </form>
+                
+                <!-- Close button -->
+                <a role="button" class="pre-order exit">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        
         <!----SCRIPTS---->
+        <script src="Overall_function.js"></script>
         <script src="Product_Data_Page.js"></script>
-        <!----SCRIPTS---->
-
     </body>
 </html>

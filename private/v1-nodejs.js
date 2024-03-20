@@ -15,7 +15,7 @@ const multer = require( 'multer' );                             // Allow to exec
 const storage = multer.diskStorage( {                           // Describe how to execute the storing ( either disk or memory )
 
     destination: function( request, file, callback ) {          // Destination where to store
-        callback( null, './public/Page-v1' );
+        callback( null, '../Uploads' );
     },
 
     filename: function( request, file, callback ) {             // How the file will be name
@@ -38,6 +38,9 @@ const router = express.Router( );                               // Set up the ap
 router.use( express.static(                                     // Let router access different path files without the need to declare full path
     path.join( __dirname, '..', 'public', 'Page-v1' )           // Path to the html, javascript and css files
 ) );
+router.use( express.static(                                     // Let router access pictures files being uploaded without the need to declare full path
+    path.join( __dirname, '..', '..', 'Uploads' )
+) );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -52,7 +55,8 @@ router.use( express.static(                                     // Let router ac
                                                                                                                                                 //
 router.get( '/PRODUCTS', function( request, response ) {                                                                                        //
                                                                                                                                                 //
-    const sql = 'SELECT Items.id, itemName, image, quantity, price FROM Sellers, Items WHERE Sellers.id=Items.sellerId';                        //
+    const sql = 'SELECT Items.id, itemName, image, quantity, price FROM Items, Sellers '                                                        // avoid sellers listing then delete their accounts
+              + 'WHERE sellerId=Sellers.id';                                                                                                    //
                                                                                                                                                 //
     connection.execute( sql, function( error, result ) {                                                                                        //
         if( error ) {                                                                                                                           //
@@ -67,10 +71,28 @@ router.get( '/PRODUCTS', function( request, response ) {                        
                                                                                                                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                                                 //
+router.get( '/PRODUCTS/:search', function( request, response ) {                                                                                //
+                                                                                                                                                //
+    const sql = 'SELECT Items.id, itemName, image, quantity, price FROM Items, Sellers '                                                        // avoid sellers listing then delete their accounts
+              + 'WHERE sellerId=Sellers.id AND itemName LIKE ?';                                                                                //
+                                                                                                                                                //
+    connection.execute( sql, [ '%' + request.params.search + '%' ], function( error, result ) {                                                 //
+        if( error ) {                                                                                                                           //
+            console.log( error );                                                                                                               //
+            return;                                                                                                                             //
+        }                                                                                                                                       //
+        response.header( 'Content-Type', 'application/json' );                                                                                  //
+        response.json( result );                                                                                                                //
+    } );                                                                                                                                        //
+                                                                                                                                                //
+} );                                                                                                                                            //
+                                                                                                                                                //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                                                //
 router.get( '/ITEMID/:id', function( request, response ) {                                                                                      //
                                                                                                                                                 //
-    const sql = 'SELECT itemName, image, quantity, price, companyName, phoneNumber FROM Sellers, Items '                                        //
-              + 'WHERE sellerId=Sellers.id and Items.id=?';                                                                                     //
+    const sql = 'SELECT itemName, image, quantity, price, companyName, phoneNumber FROM Sellers, Items '                                        // avoid sellers listing then delete their accounts
+              + 'WHERE sellerId=Sellers.id AND Items.id=?';                                                                                     //
                                                                                                                                                 //
     connection.execute( sql, [ request.params.id ], function( error, result ) {                                                                 //
         if( error ) {                                                                                                                           //
@@ -87,7 +109,8 @@ router.get( '/ITEMID/:id', function( request, response ) {                      
                                                                                                                                                 //
 router.get( '/ITEMORDERED/:code', function( request, response ) {                                                                               //
                                                                                                                                                 //
-    const sql = 'SELECT itemName, image, Orders.id FROM Orders, Items WHERE Items.id=itemId and vertifyCode=?';                                 //
+    const sql = 'SELECT itemName, image, Orders.id FROM Orders, Items, Sellers '                                                                //
+              + 'WHERE sellerId=Sellers.id AND Items.id=itemId AND vertifyCode=?';                                                              //
                                                                                                                                                 //
     connection.execute( sql, [ request.params.code ], function( error, result ) {                                                               //
         if( error ) {                                                                                                                           //
@@ -128,11 +151,11 @@ router.get( '/ORDERRECEIVED/:uid', function( request, response ) {              
                                                                                                                                                 //
     const sql = 'SELECT Orders.id, Orders.time, Users.phoneNumber, Items.itemName '
               + 'FROM Orders, Users, Sellers, Items '
-              + 'WHERE Orders.userId=Users.id and Orders.itemId=Items.id and Items.sellerId=Sellers.id and Sellers.id=?';                                                                               //
+              + 'WHERE Orders.userId=Users.id and Orders.itemId=Items.id and Items.sellerId=Sellers.id and Sellers.id=?';                                  //
                                                                                                                                                 //
     //console.log(sql);                                                                                                                         //
                                                                                                                                                 //
-    connection.execute( sql, [ request.params.uid ], function( error, result ) {                                                                                                             //
+    connection.execute( sql, [ request.params.uid ], function( error, result ) {                                                                                //
         if( error ) {                                                                                                                           //
             console.log( error );                                                                                                               //
             return;                                                                                                                             //
@@ -188,9 +211,15 @@ router.get( '/item', function( request, response ) {                            
             console.log( error );                                                                               //
             return;                                                                                             //
         }                                                                                                       //
-        response.sendFile(                                                                                      //
-            path.join( __dirname, '..', 'public', 'Page-v1', 'Product_Data_Page.html' )                         //
-        );                                                                                                      //
+                                                                                                                //
+        if( result != undefined && result.length > 0 )                                                          //
+            response.sendFile(                                                                                  //
+                path.join( __dirname, '..', 'public', 'Page-v1', 'Product_Data_Page.html' )                     //
+            );                                                                                                  //
+        else                                                                                                    //
+            response.sendFile(                                                                                  //
+                path.join( __dirname, "..", "public", "Page-v1", "Error_Page.html" )                            //
+            );                                                                                                  //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
@@ -206,9 +235,15 @@ router.get( '/itemordered', function( request, response ) {                     
             console.log( error );                                                                               //
             return;                                                                                             //
         }                                                                                                       //
-        response.sendFile(                                                                                      //
-            path.join( __dirname, '..', 'public', 'Page-v1', 'Product_Ordered_Page.html' )                      //
-        );                                                                                                      //
+                                                                                                                //
+        if( result != undefined && result.length > 0 )                                                          //
+            response.sendFile(                                                                                  //
+                path.join( __dirname, '..', 'public', 'Page-v1', 'Product_Ordered_Page.html' )                  //
+            );                                                                                                  //
+        else                                                                                                    //
+            response.sendFile(                                                                                  //
+                path.join( __dirname, "..", "public", "Page-v1", "Error_Page.html" )                            //
+            );                                                                                                  //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
@@ -239,7 +274,7 @@ router.get( '/business', function( request, response ) {                        
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                 //
 router.get( '/business/additem',                                                                                //
-    helmet( {                                                                                                   // Set up new policy here to let blob go through
+    helmet( {                                                                                                   // Set up new policy here to let blob (or image) go through
         contentSecurityPolicy: {                                                                                //
             directives: {                                                                                       //
                 ...helmet.contentSecurityPolicy.getDefaultDirectives(),                                         //
@@ -295,7 +330,7 @@ router.get( '/business/item',                                                   
                 path.join( __dirname, '..', 'public', 'Page-v1', 'Business_Edit_Item_Page.html' )               //
             );                                                                                                  //
         else                                                                                                    //
-            response.redirect( './access?denied=1');                                                            //
+            response.redirect( './access?denied=1' );                                                           //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
@@ -304,7 +339,24 @@ router.get( '/business/item',                                                   
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                //
+router.post( '/search', function( request, response ) {                                                         //
+                                                                                                                //
+    const data = request.body;                                                                                  //
+    const sql = 'SELECT id FROM Items WHERE itemName LIKE ?';                                                   //
+                                                                                                                //
+    connection.execute( sql, [ '%' + data.keyword + '%' ], function( error, result ) {                          //
+        if( error ) {                                                                                           //
+            console.log( error );                                                                               //
+            return;                                                                                             //
+        }                                                                                                       //
+        //console.log( result );                                                                                  //
+        response.redirect( '/buying?search=' + data.keyword );                                                  //
+    } );                                                                                                        //
+                                                                                                                //
+} );                                                                                                            //
+                                                                                                                //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                 //
 router.post( '/preorder', function( request, response ) {                                                       //
@@ -316,14 +368,15 @@ router.post( '/preorder', function( request, response ) {                       
         'INSERT INTO Orders( itemId, userId, vertifyCode ) VALUES ( ?, ?, ? )'                                  //
     ];                                                                                                          //
                                                                                                                 //
-    var userid, code = generateAPI();                                                                           //
+    var userid;                                                                                                 //
+    const code = generateAPI();                                                                                 //
                                                                                                                 //
-    connection.execute( sql[ 0 ], [ request.body.phonenumber ], function( error, result ) {                     //
-        if( error ) {                                                                                           //
-            console.log( error );                                                                               //
-            return;                                                                                             //
-        }                                                                                                       //
-                                                                                                                //
+    connection.execute( sql[ 0 ], [ request.body.phonenumber ], function( error, result ) {                     // There's a reason why we divide the code in the
+        if( error ) {                                                                                           // first execute (the if part). We did it since if
+            console.log( error );                                                                               // we put it outside, the execute part will do it at
+            return;                                                                                             // almost the same time as the first execute( or
+        }                                                                                                       // saying the execute is synchronous so we make it
+                                                                                                                // asynchronous by putting it inside if-else)
         if( result != undefined && result.length > 0 ) {                                                        //
                                                                                                                 //
             userid = result[ 0 ].id;                                                                            //
@@ -385,7 +438,7 @@ router.post( '/preorder', function( request, response ) {                       
             } );                                                                                                //
                                                                                                                 //
         }                                                                                                       //
-    } );                                                                                                        //                                       
+    } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
                                                                                                                 //
@@ -491,7 +544,7 @@ router.post( '/business/edited',                                                
                                                                                                                 //
         if( request.file != undefined ) {                                                                       //
                                                                                                                 //
-            fs.unlink( './public/Page-v1/' + request.body.image_name, function( err ) {                         //
+            fs.unlink( '../Uploads/' + request.body.image_name, function( err ) {                         //
                                                                                                                 //
                 if( err && err.code == 'ENOENT' )                                                               //
                     // file doens't exist                                                                       //
