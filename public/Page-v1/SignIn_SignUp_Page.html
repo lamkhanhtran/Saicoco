@@ -1,37 +1,71 @@
 <!DOCTYPE html>
 <html>
     <head>
-    
-        <title>Tabebiki</title>
+        <!-- Name of the tab -->
+        <title>Sign In | Tabebiki</title>
+        
+        <!-- Character sets you can use -->
         <meta charset="UTF-8">
+
+        <!-- Provides an HTTP header for the information/value of the content attribute -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Setting the viewport to make your website look good on all devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!----
+            <meta name="keywords" content="tabebiki">  Helps your page able to be found by the keywords 
+        ---->
+        
+        <!-- General style css -->
+        <link rel="stylesheet" type="text/css" href="Overall_style.css">
+
+        <!-- Specific style css -->
         <link rel="stylesheet" type="text/css" href="SignIn_SignUp_Page.css">
+
+        <!-- Free icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Using the font in this page to style our page -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
-    
     </head>
     
     <body>
-
-        <!----HEADER---->
-        <header>
-
-            <a href="./" class="logo">Tabebiki</a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-            <a href="./access" class="btn">Restaurant Login</a>
-
-        </header>
-        <!----HEADER---->
-
-
         <!----SIGNINGS---->
-        <section class="access">
+        <section class="access-display">
+            <!-- Box that contains sign in and sign up -->
+            <div class="signing-boxes">
+                <!-- Tab to choose between sign in and sign up -->
+                <div class="signing-choosing">
+                    <!-- Sign in (left tab) -->
+                    <a class="tab" id="left" type="button"><h3>SIGN IN</h3></a>
+                    
+                    <!-- Sign up (right tab) -->
+                    <a class="tab hidden" id="right" type="button"><h3>SIGN UP</h3></a>
+                </div>
 
-            <!----SIGNIN_SECTION---->
+                <!-- Form surroundings -->
+                <div class="signing-form">
+                    <!-- Form display (change depend on tab) -->
+                    <form class="signing" method="POST" action="./signin">
+                        <!-- Form display (change depend on tab) -->
+                        <p style="display: none;" class="error" id="err1">ERROR IN SIGNING INTO ACCOUNT, PLEASE TRY AGAIN</p>
+                        <label for="phonenumber1">Phone number:</label> <br>
+                        <input type="text" name="phonenumber" id="phonenumber1" placeholder="phonenumber" required> <br>
+                        <label for="password1">PASSWORD: </label> <br>
+                        <input type="password" name="password" id="password1" placeholder="password" required> <br>
+                        <input type="submit" class="btn" value="Sign in">
+                    </form>
+                </div>
+            </div>
+            <!-- Sign in section -->
             <form class="signing" method="POST" action="./signin">
-
                 <fieldset>
                     <h2>SIGN IN</h2>
                     <p style="display: none;" class="error" id="err1">ERROR IN SIGNING INTO ACCOUNT, PLEASE TRY AGAIN</p>
@@ -41,14 +75,10 @@
                     <input type="password" name="password" id="password1" placeholder="password" required> <br>
                     <input type="submit" class="btn" value="Sign in">
                 </fieldset>
-
             </form>
-            <!----SIGNIN_SECTION---->
 
-
-            <!----SIGNUP_SECTION---->
+            <!-- Sign up section -->
             <form class="signing" method="POST" action="./signup">
-
                 <fieldset>
                     <h2>SIGN UP</h2>
                     <p style="display: none;" class="error" id="err2">ERROR IN CREATING A NEW ACCOUNT, PLEASE TRY AGAIN</p>
@@ -62,17 +92,11 @@
                     NOTE 2: Please note that if you do not provide your own password, we will assume the password will be the phone number</p>
                     <input type="submit" class="btn" value="Sign up">
                 </fieldset>
-
             </form>
-            <!----SIGNUP_SECTION---->
-
         </section>
-        <!----SIGNINGS---->
-
 
         <!----SCRIPTS---->
+        <script src="Overall_function.js"></script>
         <script src="SignIn_SignUp_Page.js"></script>
-        <!----SCRIPTS---->
-
     </body>
 </html>

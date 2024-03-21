@@ -21,4 +21,16 @@
     
     }
 
+    const left = document.getElementById( "left" );
+    const right = document.getElementById( "right" );
+    const signing = document.getElementsByClassName( "signing" )[ 0 ];
+    left.addEventListener( "click", function() {
+        left.className = "tab";
+        right.className = "tab hidden";
+    } );
+    right.addEventListener( "click", function() {
+        right.className = "tab";
+        left.className = "tab hidden";
+    } );
+
 } )( );

@@ -1,45 +1,79 @@
-@import "Overall_style.css";
-
-#menu-icon {
-    font-size               : 2rem;
-    cursor                  : pointer;
-    display                 : none;
+.login {
+    display                         : none;
 }
 
-section {
-    padding                 : 100px 17vw;
+/*************************************************/
+/* Signing section */
+
+.access-display {
+    margin                          : 0 auto;
+    max-width                       : 500px;
+    padding                         : 100px 20px 50px;
 }
 
-.access {
-    width                   : 100%;
-    min-height              : 90vh;
-    display                 : grid;
-    grid-template-columns   : repeat( 2, 1fr );
-    grid-gap                : 1.5rem;
-    align-items             : center;
+.signing-boxes {
+    display                         : flex;
+    flex-direction                  : column;
 }
 
-.signing {
-    text-align              : center;
+.signing-choosing {
+    display                         : grid;
+    grid-template-columns           : repeat( 2, 1fr );
+    height                          : 50px;
 }
+
+.signing-form {
+    background                      : var( --bg-color3 );
+    padding                         : 25px;
+    transition                      : 0.5s ease;
+    z-index                         : 2;
+}
+
+/*************************************************/
+/* Tab part */
+
+.tab {
+    align-items                     : center;
+    background                      : var( --bg-color3 );
+    display                         : flex;
+    padding-left                    : 20px;
+    transition                      : 0.5s ease;
+}
+
+.hidden {
+    cursor                          : pointer;
+    opacity                         : 0.5;
+}
+
+.hidden:hover {
+    opacity                         : 0.75;
+}
+
+.tab#left:not(.hidden) {
+    border-top-left-radius          : 20px;
+    box-shadow                      : -3px -2px 4px 2px rgba(255, 255, 255, 0.313);
+}
+
+.tab.hidden#left {
+    box-shadow                      : -3px -2px 4px 2px rgba(0, 0, 0, 1);;
+}
+
+.tab#right:not(.hidden) {
+    border-top-right-radius         : 20px;
+    box-shadow                      : 3px -2px 4px 2px rgba(255, 255, 255, 0.313);
+}
+
+.tab.hidden#right {
+    box-shadow                      : 3px -2px 4px 2px rgba(0, 0, 0, 1);
+}
+
+/*************************************************/
+/* Signing box part */
+
 
 .signing h2{
     font-size               : var( --h2-font );
     color                   : var( --main-color );
-}
-
-.btn{
-    display                 : inline-block;
-    padding                 : 10px 20px;
-    background              : var( --main-color );
-    color                   : #fff;
-    border-radius           : 0.5rem;
-}
-
-.btn:hover{
-    cursor                  : pointer;
-    transform               : scale( 1.2 );
-    transition              : 0.4s;
 }
 
 .error {

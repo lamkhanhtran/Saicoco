@@ -2,7 +2,9 @@
 document.body.insertAdjacentHTML( "afterbegin", `
 <!----HEADER---->
 <header>
+    <!-- Menu bar -->
     <nav class="fixed-nav">
+        <!-- Left navigations -->
         <nav class="left-fixed-nav">
             <!-- Logo ( Shown everytime ) -->
             <a href="./" class="logo">Tabebiki</a>
@@ -15,7 +17,7 @@ document.body.insertAdjacentHTML( "afterbegin", `
         </nav>
 
         <!-- Login button ( Shown on non-mobile screen only ) -->
-        <a href="./access" class="non-mobile-menu-nav btn">Login as seller</a>
+        <a href="./access" class="login non-mobile-menu-nav btn">Login as seller</a>
 
         <!-- Menu burger bar ( Shown on mobile-only screen only ) -->
         <a id="menu-icon" role="button">
@@ -36,7 +38,7 @@ document.body.insertAdjacentHTML( "afterbegin", `
         </nav>
 
         <!-- Login button -->
-        <a href="./access" class="btn">Login as seller</a>
+        <a href="./access" class="login btn">Login as seller</a>
     </nav>
 </header>` );
 

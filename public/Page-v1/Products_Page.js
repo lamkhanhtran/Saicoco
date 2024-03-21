@@ -3,6 +3,7 @@
     const search = document.getElementById( "search-name" );
     const reset = document.getElementById( "reset" );
     const container = document.getElementsByClassName( "products" )[ 0 ];
+    const pageName = document.getElementsByTagName( "title" )[ 0 ];
     var items_data;
 
     const queries = window.location.search
@@ -14,8 +15,8 @@
                 }, { } );
 
     if( "search" in queries ) {
-
-        document.title = "Search: \"" + queries[ "search" ] + "\" " + document.title;
+        
+        pageName.innerHTML = "Search: \"" + queries[ "search" ] + "\"" + pageName.innerHTML;
         search.value = queries[ "search" ];
         items_data = await fetch( "./PRODUCTS/" + queries[ "search" ] ).then( ( response ) => {
 
@@ -26,7 +27,7 @@
     }
     else {
 
-        document.title = "Products " + document.title;
+        pageName.innerHTML = "Products" + pageName.innerHTML;
         items_data = await fetch( "./PRODUCTS" ).then( ( response ) => {
 
             return response.json();
@@ -41,20 +42,20 @@
 
         for( var i = 0; i < items_data.length; i++ ) {
 
-            var item = document.createElement( "a" );
+            const item = document.createElement( "a" );
             item.setAttribute( "class", "item-box" );
             item.setAttribute( "href", "/item?id=" + items_data[ i ].id );
 
-            var img = document.createElement( "img" );
+            const img = document.createElement( "img" );
             img.setAttribute( "src", items_data[ i ].image );
             img.setAttribute( "alt", items_data[ i ].itemName );
             item.appendChild( img );
 
-            var h3 = document.createElement( "h3" );
+            const h3 = document.createElement( "h3" );
             h3.innerHTML = items_data[ i ].itemName;
             item.appendChild( h3 );
 
-            var p = document.createElement( "p" );
+            const p = document.createElement( "p" );
             p.innerHTML = "Quatity: " + items_data[ i ].quantity
                         + "<br>Price: " + items_data[ i ].price;
             item.appendChild( p );
@@ -66,7 +67,9 @@
     }
 
     reset.addEventListener( "click", function() {
+
         search.value = "";
+
     } );
 
 } )( );
