@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>Tabebiki</title>
+        <!-- Name of the tab -->
+        <title>hello | Tabebiki</title>
+        
+        <!-- Character sets you can use -->
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="Business_Page.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
 
+        <!-- Provides an HTTP header for the information/value of the content attribute -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Setting the viewport to make your website look good on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!----
+            <meta name="keywords" content="tabebiki">  Helps your page able to be found by the keywords 
+        ---->
+        
+        <!-- General style css -->
+        <link rel="stylesheet" type="text/css" href="Overall_style.css">
+
+        <!-- Specific style css -->
+        <link rel="stylesheet" type="text/css" href="Business_Page.css">
+
+        <!-- Free icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Connect to this page before loading the page -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <!-- Connect to this page before loading the page -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Using the font in this page to style our page -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
-
-        <!----HEADER---->
-        <header>
-
-            <a href="./" class="logo">Tabebiki</a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-
-        </header>
-        <!----HEADER---->
-
-
-        <!----PRODUCTS---->
-        <section class="items-selling">
-
-            <div class="heading">
-                <span>ITEMS</span>
-                <a id="add-item">+ ADD ITEM</a>
-            </div>
-
-            <!----IIEMS---->
-            <div class="containers" id="items-container">
-                <a class="item-box" href="#">
-                    <img src="not-available.png" alt="Not available">
-                    <h3>NOT AVAILABLE</h3>
-                </a>
-            </div>
-            <!----IIEMS---->
-
-        </section>
-        <!----PRODUCTS---->
-
-
-        <!----SECTIONS---->
+        <!----ORDERS---->
         <section class="items-orders">
+            <!-- Heading -->
+            <h3 class="heading">ORDERS</h3>
 
-            <div class="heading">
-                <span>ORDERS</span>
-            </div>
-
-            <!----ORDERS---->
-
+            <!-- Orders -->
             <div class="containers" id="orders-container">
                 <table class="order-table">
                     <tr>
@@ -68,12 +56,40 @@
             <!----ORDERS---->
 
         </section>
-        <!----SECTIONS---->
+
+        <!----PRODUCTS---->
+        <section class="items-selling">
+            <!-- Products showcase -->
+            <section class="product-display">
+                <!-- Heading -->
+                <h3 class="heading">Items</h3>
+
+                <!-- Items -->
+                <div class="products">
+                    <div class="item-non-avail">
+                        <img src="not-available.png" alt="Not available">
+                        <h3>NOT AVAILABLE</h3>
+                    </div>
+                </div>
+            </section>
+            <div class="heading">
+                <span>ITEMS</span>
+                <a id="add-item">+ ADD ITEM</a>
+            </div>
+
+            <!----IIEMS---->
+            <div class="containers" id="items-container">
+                <a class="item-box" href="#">
+                    <img src="not-available.png" alt="Not available">
+                    <h3>NOT AVAILABLE</h3>
+                </a>
+            </div>
+
+        </section>
 
 
         <!----SCRIPTS---->
+        <script src="Overall_function.js"></script>
         <script src="Business_Page.js"></script>
-        <!----SCRIPTS---->
-
     </body>
 </html>

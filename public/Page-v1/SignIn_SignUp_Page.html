@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- Name of the tab -->
-        <title>Sign In | Tabebiki</title>
+        <title>Sign in/Sign up | Tabebiki</title>
         
         <!-- Character sets you can use -->
         <meta charset="UTF-8">
@@ -54,45 +54,39 @@
                 <div class="signing-form">
                     <!-- Form display (change depend on tab) -->
                     <form class="signing" method="POST" action="./signin">
-                        <!-- Form display (change depend on tab) -->
-                        <p style="display: none;" class="error" id="err1">ERROR IN SIGNING INTO ACCOUNT, PLEASE TRY AGAIN</p>
-                        <label for="phonenumber1">Phone number:</label> <br>
-                        <input type="text" name="phonenumber" id="phonenumber1" placeholder="phonenumber" required> <br>
-                        <label for="password1">PASSWORD: </label> <br>
-                        <input type="password" name="password" id="password1" placeholder="password" required> <br>
-                        <input type="submit" class="btn" value="Sign in">
+                        <!-- Error display messages container (if something wrongly entered) -->
+                        <div class="error">
+                            <!-- Sign in rror message (if something wrongly entered) -->
+                            <p style="display: none;" id="err1">ERROR IN SIGNING INTO ACCOUNT, PLEASE TRY AGAIN</p>
+
+                            <!-- Sign up error message (if something wrongly entered) -->
+                            <p style="display: none;" id="err2">ERROR IN CREATING A NEW ACCOUNT, PLEASE TRY AGAIN</p>
+                        </div>
+
+                        <!-- Company name input -->
+                        <div class="company-name"></div>
+                        
+                        <!-- Phone number input -->
+                        <div class="phone-number">
+                            <label for="phonenumber1">Phone number:</label>
+                            <input type="text" name="phonenumber" id="phonenumber1" placeholder="Phone number" required>
+                        </div>
+                        
+                        <!-- Password input -->
+                        <div class="password">
+                            <label for="password1">Password:</label>
+                            <input type="password" name="password" id="password1" placeholder="Password" required>
+                        </div>
+
+                        <!-- Note for sign up input -->
+                        <div class="warning"></div>
+
+                        <div class="button">
+                            <input type="submit" class="btn" value="Sign in">
+                        </div>
                     </form>
                 </div>
             </div>
-            <!-- Sign in section -->
-            <form class="signing" method="POST" action="./signin">
-                <fieldset>
-                    <h2>SIGN IN</h2>
-                    <p style="display: none;" class="error" id="err1">ERROR IN SIGNING INTO ACCOUNT, PLEASE TRY AGAIN</p>
-                    <label for="phonenumber1">PHONE NUMBER: </label>
-                    <input type="text" name="phonenumber" id="phonenumber1" placeholder="phonenumber" required> <br>
-                    <label for="password1">PASSWORD: </label>
-                    <input type="password" name="password" id="password1" placeholder="password" required> <br>
-                    <input type="submit" class="btn" value="Sign in">
-                </fieldset>
-            </form>
-
-            <!-- Sign up section -->
-            <form class="signing" method="POST" action="./signup">
-                <fieldset>
-                    <h2>SIGN UP</h2>
-                    <p style="display: none;" class="error" id="err2">ERROR IN CREATING A NEW ACCOUNT, PLEASE TRY AGAIN</p>
-                    <label for="companyname">COMPANY NAME: </label>
-                    <input name="companyname" id="companyname" placeholder="companyname" required> <br>
-                    <label for="phonenumber2">PHONE NUMBER: </label>
-                    <input name="phonenumber" id="phonenumber2" placeholder="phonenumber" pattern="[0-9]{10,14}" required> <br>
-                    <label for="password2">PASSWORD: </label>
-                    <input name="password" id="password2" placeholder="password"> <br>
-                    <p>NOTE 1: Please write your number without '-'<br>
-                    NOTE 2: Please note that if you do not provide your own password, we will assume the password will be the phone number</p>
-                    <input type="submit" class="btn" value="Sign up">
-                </fieldset>
-            </form>
         </section>
 
         <!----SCRIPTS---->

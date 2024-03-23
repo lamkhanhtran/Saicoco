@@ -18,7 +18,9 @@
 
     if( item_data.length ) {
 
-        const phone_insert = document.getElementsByClassName( "pop-up" )[ 0 ];
+        const pop_up = document.getElementsByClassName( "pop-up" )[ 0 ];
+        const form = document.getElementsByClassName( "pop-up-form" )[ 0 ];
+        form.setAttribute( "action", "./preorder?id=" + queries[ "id" ] );
 
         const name = document.getElementById( "name" );
         name.innerHTML = item_data[ 0 ].itemName;
@@ -39,20 +41,14 @@
         const preorder_btn = document.getElementById( "order" );
         preorder_btn.addEventListener( "click", function( ) {
 
-            phone_insert.setAttribute( "style", "display: flex;" );
-            
+            pop_up.setAttribute( "style", "display: flex;" );
+
         } );
 
-        const phone_btns = document.getElementsByClassName( "pre-order" );
-        phone_btns[ 0 ].addEventListener( "click", function( ) {
+        const exit_btn = document.getElementsByClassName( "exit" )[ 0 ];
+        exit_btn.addEventListener( "click", function( ) {
 
-            phone_insert.setAttribute( "action", "./preorder?id=" + queries[ "id" ] );
-            
-        } );
-        phone_btns[ 1 ].addEventListener( "click", function( ) {
-
-            phone_insert.setAttribute( "action", "" );
-            phone_insert.setAttribute( "style", "display: none;" );
+            pop_up.setAttribute( "style", "display: none;" );
             
         } );
 
