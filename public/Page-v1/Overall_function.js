@@ -7,17 +7,17 @@ document.body.insertAdjacentHTML( "afterbegin", `
         <!-- Left navigations -->
         <nav class="left-fixed-nav">
             <!-- Logo ( Shown everytime ) -->
-            <a href="./" class="logo">Tabebiki</a>
+            <a href="/" class="logo">Tabebiki</a>
 
             <!-- About ( Shown on non-mobile screen only ) -->
-            <a href="./about" class="non-mobile-menu-nav">About</a>
+            <a href="/about" class="non-mobile-menu-nav">About</a>
 
             <!-- Contact ( Shown on non-mobile screen only ) -->
-            <a href="./contact" class="non-mobile-menu-nav">Contact</a>
+            <a href="/contact" class="non-mobile-menu-nav">Contact</a>
         </nav>
 
         <!-- Login button ( Shown on non-mobile screen only ) -->
-        <a href="./access" class="login non-mobile-menu-nav btn">Login as seller</a>
+        <a href="/access" class="login non-mobile-menu-nav btn">Login as seller</a>
 
         <!-- Menu burger bar ( Shown on mobile-only screen only ) -->
         <a id="menu-icon" role="button">
@@ -31,14 +31,14 @@ document.body.insertAdjacentHTML( "afterbegin", `
         <!-- Menu box grid part -->
         <nav class="mobile-menu-grid-nav">
             <!-- About -->
-            <a href="./about">About</a>
+            <a href="/about">About</a>
 
             <!-- Something -->
-            <a href="./contact">Contact</a>
+            <a href="/contact">Contact</a>
         </nav>
 
         <!-- Login button -->
-        <a href="./access" class="login btn">Login as seller</a>
+        <a href="/access" class="login btn">Login as seller</a>
     </nav>
 </header>` );
 

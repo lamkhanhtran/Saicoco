@@ -9,7 +9,7 @@
                 }, { } );
     
 
-    const item_data = await fetch( "./ITEMID/" + queries[ "id" ] ).then( ( response ) => {
+    const item_data = await fetch( "/ITEMID/" + queries[ "id" ] ).then( ( response ) => {
 
         return response.json();
 
@@ -20,7 +20,7 @@
 
         const pop_up = document.getElementsByClassName( "pop-up" )[ 0 ];
         const form = document.getElementsByClassName( "pop-up-form" )[ 0 ];
-        form.setAttribute( "action", "./preorder?id=" + queries[ "id" ] );
+        form.setAttribute( "action", "/preorder?id=" + queries[ "id" ] );
 
         const name = document.getElementById( "name" );
         name.innerHTML = item_data[ 0 ].itemName;

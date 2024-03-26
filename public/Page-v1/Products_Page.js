@@ -18,7 +18,7 @@
         
         pageName.innerHTML = "Search: \"" + queries[ "search" ] + "\"" + pageName.innerHTML;
         search.value = queries[ "search" ];
-        items_data = await fetch( "./PRODUCTS/" + queries[ "search" ] ).then( ( response ) => {
+        items_data = await fetch( "/PRODUCTS/" + queries[ "search" ] ).then( ( response ) => {
 
             return response.json();
     
@@ -28,7 +28,7 @@
     else {
 
         pageName.innerHTML = "Products" + pageName.innerHTML;
-        items_data = await fetch( "./PRODUCTS" ).then( ( response ) => {
+        items_data = await fetch( "/PRODUCTS" ).then( ( response ) => {
 
             return response.json();
     

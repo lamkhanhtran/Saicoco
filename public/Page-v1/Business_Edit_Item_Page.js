@@ -8,52 +8,73 @@
                     return { ...response, [ data[ 0 ] ] : data[ 1 ] };
                 }, { } );
     
-    const items_data = await fetch( "../ITEMSELLING/" + queries[ "uid" ] + "/" + queries[ "iid" ] ).then( ( response ) => {
+    const items_data = await fetch( "/ITEMSELLING/" + queries[ "uid" ] + "/" + queries[ "iid" ] ).then( ( response ) => {
 
         return response.json();
 
     } );
 
-    var img = document.getElementById( "img" );
-    img.setAttribute( "src", "../" + items_data[ 0 ].image );
+    document.getElementsByClassName( "item" )[ 0 ]
+            .setAttribute( "action", "/business/edited" + window.location.search );
 
-    var image_name = document.getElementById( "image-name" );
+    const img = document.getElementById( "img" );
+    img.setAttribute( "src", "/" + items_data[ 0 ].image );
+
+    const image_name = document.getElementById( "image-name" );
     image_name.setAttribute( "value", items_data[ 0 ].image );
 
-    var name = document.getElementById( "name" );
+    const name = document.getElementById( "name" );
     name.setAttribute( "value", items_data[ 0 ].itemName );
 
-    var quantity = document.getElementById( "quantity" );
+    const quantity = document.getElementById( "quantity" );
     quantity.setAttribute( "value", items_data[ 0 ].quantity );
 
-    var price = document.getElementById( "price" );
+    const price = document.getElementById( "price" );
     price.setAttribute( "value", items_data[ 0 ].price );
 
-    var img_input = document.getElementById( "add-img" );
+    const img_input = document.getElementById( "add-img" );
     img_input.setAttribute( "value", items_data[ 0 ].image );
+
     img_input.addEventListener( "change", ( e ) => {
 
-        var Files = e.target.files;
+        const Files = e.target.files;
 
-        if ( Files.length && Files[ 0 ].type.split( "/" )[ 0 ] === "image" && Files[ 0 ].size <= 1024 * 1024 * 2 )
+        if ( !Files.length || Files[ 0 ].type.split( "/" )[ 0 ] != "image" ) {
         
-            img.src = window.URL.createObjectURL( Files[ 0 ] );
-        
-        else {
+            img_input.value = "";
+            img.src = "/" + items_data[ 0 ].image;
+            alert( "Your uploaded file is not an image" );
+            
+        }
+        else if ( Files[ 0 ].size >= 1024 * 1024 * 4 ) {
 
             img_input.value = "";
-            img.src = "../" + items_data[ 0 ].image;
-            alert( "There is something wrong with the file you upload" );
+            img.src = "/" + items_data[ 0 ].image;
+            alert( "Your uploaded image is too big" );
 
         }
+        else
+            img.src = window.URL.createObjectURL( Files[ 0 ] );
 
     } );
 
-    var add_item_btn = document.getElementsByClassName( "btn" )[ 0 ];
-    add_item_btn.addEventListener( "click", async ( e ) => {
+    const pop_up = document.getElementsByClassName( "pop-up" )[ 0 ];
+    const form = document.getElementsByClassName( "pop-up-form" )[ 0 ];
+    form.setAttribute( "action", "/business/delete" + window.location.search );
+    
+    const delete_btn = document.getElementById( "delete" );
+    delete_btn.addEventListener( "click", function() {
 
-       document.getElementsByClassName( "item" )[ 0 ].setAttribute( "action", "./edited" + window.location.search );
-            
+        pop_up.setAttribute( "style", "display: flex;" );
+
     } );
+
+    const no_btn = document.getElementById( "no" );
+    no_btn.addEventListener( "click", function() {
+
+        pop_up.setAttribute( "style", "display: none;" );
+
+    } );
+    
 
 } )( );

@@ -1,5 +1,7 @@
 (async () => {
 
+    const container = document.getElementsByClassName( "containers" );
+
     const queries = window.location.search
                 .replace( "?", "" )
                 .split( "&" )
@@ -8,15 +10,13 @@
                     return { ...response, [ data[ 0 ] ] : data[ 1 ] };
                 }, { } );
 
-    const container = document.getElementsByClassName( "containers" );
-
-    const items_data = await fetch( "./ITEMSELLING/" + queries[ "uid" ] ).then( ( response ) => {
+    const items_data = await fetch( "/ITEMSELLING/" + queries[ "uid" ] ).then( ( response ) => {
 
         return response.json();
 
     } );
 
-    const orders_data = await fetch( "./ORDERRECEIVED/" + queries[ "uid" ] ).then( ( response ) => {
+    const orders_data = await fetch( "/ORDERRECEIVED/" + queries[ "uid" ] ).then( ( response ) => {
 
         return response.json();
 
@@ -24,7 +24,9 @@
 
     if( orders_data.length ){
 
-        for( var i = 0; i < orders_data.length; i++ ) {
+        const tbody = document.createElement( "tbody" );
+
+        for( var i = orders_data.length - 1; i >= 0; i-- ) {
 
             const table_row = document.createElement( "tr" );
 
@@ -44,13 +46,15 @@
             td4.innerHTML = orders_data[ i ].time.slice( 0, 19 ).replace( 'T', ' ' );
             table_row.appendChild( td4 );
 
-            container[ 0 ].children[ 0 ].appendChild( table_row );
+            tbody.appendChild( table_row );
 
         }
+
+        container[ 0 ].children[ 0 ].appendChild( tbody );
     
     }
 
-    document.getElementById( "add-item" ).setAttribute( "href", "./business/additem?usr_c=" + queries[ "usr_c" ]
+    document.getElementById( "add-item" ).setAttribute( "href", "/business/additem?usr_c=" + queries[ "usr_c" ]
                                                               + "&uid=" + queries[ "uid" ] );
 
     if( items_data.length ){
@@ -61,7 +65,9 @@
 
             var item = document.createElement( "a" );
             item.setAttribute( "class", "item-box" );
-            item.setAttribute( "href", "/business/item?usr_c=" + queries[ "usr_c" ] + "&uid=" + queries[ "uid" ] + "&iid=" + items_data[ i ].id );
+            item.setAttribute( "href", "/business/item?usr_c=" + queries[ "usr_c" ]
+                                     + "&uid=" + queries[ "uid" ]
+                                     + "&iid=" + items_data[ i ].id );
 
             var img = document.createElement( "img" );
             img.setAttribute( "src", items_data[ i ].image );

@@ -10,7 +10,7 @@
     function leftTrigger() {
         left.className = "tab";
         right.className = "tab hidden";
-        signing.setAttribute( "action", "./signin" );
+        signing.setAttribute( "action", "/signin" );
         company.innerHTML = "";
         note.innerHTML = "";
         button.value = "Sign in";
@@ -19,7 +19,7 @@
     function rightTrigger() {
         right.className = "tab";
         left.className = "tab hidden";
-        signing.setAttribute( "action", "./signup" );
+        signing.setAttribute( "action", "/signup" );
         company.innerHTML = `
             <label for="companyname">Company name:</label>
             <input name="companyname" id="companyname" placeholder="companyname" required>

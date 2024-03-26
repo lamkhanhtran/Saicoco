@@ -1,67 +1,93 @@
-@import "Overall_style.css";
+.heading {
+    color                           : var( --main-color );
+    font-weight                     : 600;
+}
 
 .login {
-    color                   : var( --text-color );
-    font-size               : 1.1rem;
-    padding                 : 10px 1.2vw;
-    font-weight             : 500;
-}
-
-.login:hover {
-    cursor                  : pointer;
-    color                   : var( --main-color );
-    transition              : 0.4s;
-}
-
-#menu-icon {
-    font-size               : 2rem;
-    cursor                  : pointer;
-    display                 : none;
+    display                         : none;
 }
 
 .item {
-    padding                 : 70px 17vw;
-    width                   : 100%;
-    min-height              : 100vh;
-    display                 : grid;
-    grid-template-columns   : repeat( 2, 2fr );
-    grid-gap                : 1.5rem;
-    align-items             : center;
+    display                         : flex;
+    margin                          : 0 auto;
+    max-width                       : 1200px;
+    padding                         : 100px 20px 50px;
 }
 
-#item-img label{
-    font-size               : var( --p-font );
-    color                   : var( --main-color );
+/*************************************************/
+/* Image section */
+
+.item-img-part {
+    border                          : 3px solid var( --bg-color3 );
+    display                         : flex;
+    flex-direction                  : column;
 }
 
-#item-format .btn{
-    width                   : 100%;
+.item-img-part > * {
+    padding                         : 10px 0px;
 }
 
-#item-img img {
-    aspect-ratio            : 2 / 3;
-    width                   : 400px;
+.add-img-header {
+    align-items                     : center;
+    display                         : flex;
+    justify-content                 : space-between;
 }
 
-#item-data {
-    width                   : 100%;
-    display                 : grid;
-    grid-template-columns   : repeat( 2, 2fr );
-    grid-gap                : 1.5rem;
-    font-size               : var( --p-font );
-    color                   : var( --text-color );
+.img-added {
+    width                           : 500px;
 }
 
-.btn {
-    display                 : inline-block;
-    padding                 : 10px 20px;
-    background              : var( --main-color );
-    color                   : #fff;
-    border-radius           : 0.5rem;
+.img-added > * {
+    aspect-ratio                    : 20 / 19;
+    width                           : 100%;
 }
 
-.btn:hover {
-    cursor                  : pointer;
-    transform               : scale( 1.2 );
-    transition              : 0.4s;
+/*************************************************/
+/* Information section */
+
+.item-format-part {
+    align-items                     : center;
+    border                          : 3px solid var( --bg-color3 );
+    display                         : flex;
+    flex-direction                  : column;
+    justify-content                 : space-evenly;
+    padding                         : 100px 40px;
+    width                           : 100%;
+}
+
+.item-data {
+    width                           : 100%;
+    display                         : grid;
+    grid-template-columns           : repeat( 2, 1fr );
+    grid-gap                        : 1.5rem;
+}
+
+.item-format-part .btn{
+    width                           : 100%;
+}
+
+/*************************************************/
+/* For tablet and phone display */
+
+@media screen and ( max-width: 900px ) {
+
+    .item {
+        flex-direction              : column;
+        width                       : 100%;
+    }
+
+    .img-added {
+        width                       : 100%;
+    }
+
+    .item-format-part {
+        grid-gap                    : 20px;
+    }
+
+    .item-data {
+        grid-gap                    : 0px;
+        grid-template-columns       : none;
+        grid-template-rows          : repeat( 2, 1fr );
+    }
+
 }

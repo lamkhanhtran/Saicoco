@@ -9,7 +9,7 @@
                 }, { } );
     
 
-    const item_data = await fetch( "./ITEMORDERED/" + queries[ "code" ] ).then( ( response ) => {
+    const item_data = await fetch( "/ITEMORDERED/" + queries[ "code" ] ).then( ( response ) => {
 
         return response.json();
 

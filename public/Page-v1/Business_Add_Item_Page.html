@@ -1,68 +1,92 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>Tabebiki</title>
+        <!-- Name of the tab -->
+        <title>New item - Business | Tabebiki</title>
+        
+        <!-- Character sets you can use -->
         <meta charset="UTF-8">
+
+        <!-- Provides an HTTP header for the information/value of the content attribute -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Setting the viewport to make your website look good on all devices -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="../Business_Add_Item_Page.css">
+        
+        <!----
+            <meta name="keywords" content="tabebiki">  Helps your page able to be found by the keywords 
+        ---->
+        
+        <!-- General style css -->
+        <link rel="stylesheet" type="text/css" href="/Overall_style.css">
+
+        <!-- Specific style css -->
+        <link rel="stylesheet" type="text/css" href="/Business_Add_Item_Page.css">
+
+        <!-- Free icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <!-- Connect to this page before loading the page -->
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Using the font in this page to style our page -->
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
-    
     </head>
     
     <body>
-    
-        <!----HEADER---->
-        <header>
-
-            <a href="../" class="logo">Tabebiki</a>
-            <div class="bx bx-menu" id="menu-icon"></div>
-
-        </header>
-        <!----HEADER---->
-
-
         <!----ITEM_DATA---->
         <form class="item" method="POST" enctype="multipart/form-data">
+            <!-- Item picture -->
+            <div class="item-img-part">
+                <!-- Input for picture -->
+                <div class="add-img-header">
+                    <!-- Label -->
+                    <label class="heading" for="add-img">Add image</label>
 
-            <div id="item-img">
+                    <!-- Picture input -->
+                    <input type="file" name="img" class="heading" id="add-img" accept="image/*" required>
+                </div>
+
+                <!-- Requirement for pictures -->
+                <p>Warning: Please submit a picture not over 4MB</p>
                 
-                <label for="add-img">ADD IMAGE</label>
-                <input type="file" name="img" id="add-img" accept="image/*" required>
-                
-                <img id="img" src="../not-available.png" alt="Not available">
-            
+                <!-- Picture display -->
+                <div class="img-added">
+                    <!-- Picture -->
+                    <img id="img" src="/not-available.png" alt="Not available">
+                </div>
             </div>
 
-            <div id="item-format">
-            
-                <div id="item-data">
-            
+            <!-- Item data -->
+            <div class="item-format-part">
+                <!-- Item name -->
+                <div class="item-data">
                     <label for="name">Item name:</label>
                     <input type="text" name="itemName" id="name" placeholder="name" required>
-    
+                </div>
+
+                <!-- Item quantity -->
+                <div class="item-data">
                     <label for="quantity">Quantity:</label>
                     <input type="number" name="quantity" id="quantity" placeholder="quantity" min="1" required>
-    
+                </div>
+
+                <!-- Item price -->
+                <div class="item-data">
                     <label for="price">Price:</label>
                     <input type="number" name="price" id="price" placeholder="price" required>
-                
                 </div>
-                <br>
+
+                <!-- Add item -->                
                 <input class="btn" type="submit" value="Add new item">
-            
             </div>
-
         </form>
-        <!----ITEM_DATA---->
-
 
         <!----SCRIPTS---->
-        <script src="../Business_Add_Item_Page.js"></script>
-        <!----SCRIPTS---->
-
+        <script src="/Overall_function.js"></script>
+        <script src="/Business_Add_Item_Page.js"></script>
     </body>
 </html>

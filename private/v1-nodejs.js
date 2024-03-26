@@ -127,8 +127,8 @@ router.get( '/ITEMORDERED/:code', function( request, response ) {               
                                                                                                                                                 //
 router.get( '/ITEMSELLING/:uid/:iid?', function( request, response ) {                                                                          //
                                                                                                                                                 //
-    const sql = 'SELECT Items.id, itemName, image, quantity, price FROM Sellers, Items WHERE Sellers.id=Items.sellerId and Sellers.id=?'        //
-              + ( !request.params.iid ? '' : ' and Items.id=?' );                                                                               //
+    const sql = 'SELECT Items.id, itemName, image, quantity, price FROM Sellers, Items '                                                        //
+              + 'WHERE Sellers.id=Items.sellerId AND Sellers.id=?' + ( !request.params.iid ? '' : ' AND Items.id=?' );                          //
                                                                                                                                                 //
     //console.log(sql);                                                                                                                         //
                                                                                                                                                 //
@@ -151,7 +151,7 @@ router.get( '/ORDERRECEIVED/:uid', function( request, response ) {              
                                                                                                                                                 //
     const sql = 'SELECT Orders.id, Orders.time, Users.phoneNumber, Items.itemName '
               + 'FROM Orders, Users, Sellers, Items '
-              + 'WHERE Orders.userId=Users.id and Orders.itemId=Items.id and Items.sellerId=Sellers.id and Sellers.id=?';                                  //
+              + 'WHERE Orders.userId=Users.id AND Orders.itemId=Items.id AND Items.sellerId=Sellers.id and Sellers.id=?';                                  //
                                                                                                                                                 //
     //console.log(sql);                                                                                                                         //
                                                                                                                                                 //
@@ -252,7 +252,7 @@ router.get( '/itemordered', function( request, response ) {                     
                                                                                                                 //
 router.get( '/business', function( request, response ) {                                                        //
                                                                                                                 //
-    const sql = 'SELECT phonenumber FROM Sellers where id=?';                                                   //
+    const sql = 'SELECT phonenumber FROM Sellers WHERE id=?';                                                   //
                                                                                                                 //
     connection.execute( sql, [ request.query.uid ], function( error, result ) {                                 //
         if( error ) {                                                                                           //
@@ -284,7 +284,7 @@ router.get( '/business/additem',                                                
     } ),                                                                                                        //
     function( request, response ) {                                                                             //
                                                                                                                 //
-    const sql = 'SELECT phonenumber FROM Sellers where id=?';                                                   //
+    const sql = 'SELECT phonenumber FROM Sellers WHERE id=?';                                                   //
                                                                                                                 //
     connection.execute( sql, [ request.query.uid ], function( error, result ) {                                 //
         if( error ) {                                                                                           //
@@ -316,7 +316,7 @@ router.get( '/business/item',                                                   
     } ),                                                                                                        //
     function( request, response ) {                                                                             //
                                                                                                                 //
-    const sql = 'SELECT phonenumber FROM Sellers where id=?';                                                   //
+    const sql = 'SELECT phonenumber FROM Sellers WHERE id=?';                                                   //
                                                                                                                 //
     connection.execute( sql, [ request.query.uid ], function( error, result ) {                                 //
         if( error ) {                                                                                           //
@@ -484,7 +484,7 @@ router.post( '/signup', function( request, response ) {                         
 router.post( '/signin', function( request, response ) {                                                         //
                                                                                                                 //
     const data = request.body;                                                                                  //
-    const sql = 'SELECT id FROM Sellers WHERE phoneNumber=? and password=?';                                    //
+    const sql = 'SELECT id FROM Sellers WHERE phoneNumber=? AND password=?';                                    //
                                                                                                                 //
     connection.execute( sql, [                                                                                  //
         data.phonenumber,                                                                                       //
@@ -511,7 +511,7 @@ router.post( '/signin', function( request, response ) {                         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                 //
 router.post( '/business/adding', upload.single( 'img' ), function( request, response ) {                        //
-                                                                                                                //         
+                                                                                                                //
     //console.log( request.file );                                                                              //
     //console.log( request.body );                                                                              //
                                                                                                                 //
@@ -544,14 +544,18 @@ router.post( '/business/edited',                                                
                                                                                                                 //
         if( request.file != undefined ) {                                                                       //
                                                                                                                 //
-            fs.unlink( '../Uploads/' + request.body.image_name, function( err ) {                         //
+            fs.unlink( '../Uploads/' + request.body.image_name, function( err ) {                               //
                                                                                                                 //
-                if( err && err.code == 'ENOENT' )                                                               //
+                if( err && err.code == 'ENOENT' ) {                                                              //
                     // file doens't exist                                                                       //
                     console.log( 'File ' + request.body.image_name + ' does not exist, cannot remove it.' );    //
-                else if ( err )                                                                                 //
+                    return;
+                }
+                else if ( err ) {                                                                                //
                     // other errors, e.g. maybe we don't have enough permission                                 //
                     console.log( 'Error occurred while trying to remove file' );                                //
+                    return;
+                }
                 else                                                                                            //
                     console.log( 'File ' + request.body.image_name + ' removed' );                              //
                                                                                                                 //
@@ -562,7 +566,7 @@ router.post( '/business/edited',                                                
                                                                                                                 //
     },                                                                                                          //
     function( request, response ) {                                                                             //
-                                                                                                                //         
+                                                                                                                //
         //console.log( request.file );                                                                          //
         //console.log( request.body );                                                                          //
                                                                                                                 //
@@ -596,7 +600,56 @@ router.post( '/business/edited',                                                
             response.redirect( '/business?usr_c=' + request.query.usr_c + '&uid=' + request.query.uid );        //
         } );                                                                                                    //
                                                                                                                 //
-    
+} );                                                                                                            //
+                                                                                                                //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                //
+router.post( '/business/delete', function( request, response ) {                                                //
+                                                                                                                //
+    const sql = [                                                                                               //
+        'SELECT image FROM Items WHERE Items.sellerId=? AND Items.id=?',                                        //
+        'DELETE FROM Items WHERE Items.sellerId=? AND Items.id=?'                                             //
+    ];                                                                                                          //
+                                                                                                                //
+    connection.execute( sql[ 0 ], [                                                                             //
+        request.query.uid,                                                                                      //
+        request.query.iid                                                                                       //
+    ], function( error, result ) {                                                                              //
+        if( error ) {                                                                                           //
+            console.log( error );                                                                               //
+            return;                                                                                             //
+        }                                                                                                       //
+                                                                                                                //
+        if( result != undefined && result.length > 0 ) {                                                        //
+                                                                                                                //
+            fs.unlink( '../Uploads/' + result[ 0 ].image, function( err ) {                                     //
+                                                                                                                //
+                if( err && err.code == 'ENOENT' )                                                               //
+                    // file doens't exist                                                                       //
+                    console.log( 'File ' + result[ 0 ].image + ' does not exist, cannot remove it.' );          //
+                else if ( err )                                                                                 //
+                    // other errors, e.g. maybe we don't have enough permission                                 //
+                    console.log( 'Error occurred while trying to remove file' );                                //
+                else                                                                                            //
+                    console.log( 'File ' + result[ 0 ].image + ' removed' );                                    //
+                                                                                                                //
+            } );                                                                                                //
+                                                                                                                //
+        }                                                                                                       //
+                                                                                                                //
+        connection.execute( sql[ 1 ], [                                                                         //
+            request.query.uid,                                                                                  //
+            request.query.iid                                                                                   //
+        ], function( error, result ) {                                                                          //
+            if( error ) {                                                                                       //
+                console.log( error );                                                                           //
+                return;                                                                                         //
+            }                                                                                                   //
+                                                                                                                //
+            response.redirect( '/business?usr_c=' + request.query.usr_c + '&uid=' + request.query.uid );        //
+        } );                                                                                                    //
+    } );                                                                                                        //
+                                                                                                                //
 } );                                                                                                            //
                                                                                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

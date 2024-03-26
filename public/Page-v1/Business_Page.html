@@ -2,7 +2,7 @@
 <html>
     <head>
         <!-- Name of the tab -->
-        <title>hello | Tabebiki</title>
+        <title>Home - Business | Tabebiki</title>
         
         <!-- Character sets you can use -->
         <meta charset="UTF-8">
@@ -18,10 +18,10 @@
         ---->
         
         <!-- General style css -->
-        <link rel="stylesheet" type="text/css" href="Overall_style.css">
+        <link rel="stylesheet" type="text/css" href="/Overall_style.css">
 
         <!-- Specific style css -->
-        <link rel="stylesheet" type="text/css" href="Business_Page.css">
+        <link rel="stylesheet" type="text/css" href="/Business_Page.css">
 
         <!-- Free icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,56 +40,57 @@
         <!----ORDERS---->
         <section class="items-orders">
             <!-- Heading -->
-            <h3 class="heading">ORDERS</h3>
+            <h3 class="heading">Orders</h3>
 
             <!-- Orders -->
-            <div class="containers" id="orders-container">
+            <div class="containers">
+                <!-- Table of orders -->
                 <table class="order-table">
-                    <tr>
-                        <th>NUMBER</th>
-                        <th>ITEM NAME</th>
-                        <th>USER'S PHONE NUMBER</th>
-                        <th>TIME ORDERED</th>
-                    </tr>
+                    <!-- Table head -->
+                    <thead>
+                        <tr>
+                            <!-- Number -->
+                            <th>Number</th>
+
+                            <!-- Item name -->
+                            <th>Item name</th>
+
+                            <!-- Phone number -->
+                            <th>User's phone number</th>
+
+                            <!-- Time -->
+                            <th>Time ordered</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table body -->
                 </table>
             </div>
-            <!----ORDERS---->
-
         </section>
 
-        <!----PRODUCTS---->
+        <!----PRODUCTS SELLING CURRENTLY---->
         <section class="items-selling">
             <!-- Products showcase -->
-            <section class="product-display">
+            <div class="heading-and-adding">
                 <!-- Heading -->
                 <h3 class="heading">Items</h3>
 
-                <!-- Items -->
-                <div class="products">
-                    <div class="item-non-avail">
-                        <img src="not-available.png" alt="Not available">
-                        <h3>NOT AVAILABLE</h3>
-                    </div>
-                </div>
-            </section>
-            <div class="heading">
-                <span>ITEMS</span>
-                <a id="add-item">+ ADD ITEM</a>
+                <!-- Adding item button -->
+                <a class="btn" id="add-item">+ Add item</a>
             </div>
 
-            <!----IIEMS---->
-            <div class="containers" id="items-container">
-                <a class="item-box" href="#">
+            <!-- Items -->
+            <div class="products containers">
+                <div class="item-non-avail">
                     <img src="not-available.png" alt="Not available">
                     <h3>NOT AVAILABLE</h3>
-                </a>
+                </div>
             </div>
-
         </section>
 
 
         <!----SCRIPTS---->
-        <script src="Overall_function.js"></script>
-        <script src="Business_Page.js"></script>
+        <script src="/Overall_function.js"></script>
+        <script src="/Business_Page.js"></script>
     </body>
 </html>
