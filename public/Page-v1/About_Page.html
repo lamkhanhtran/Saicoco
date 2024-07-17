@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Name of the tab -->
+        <title>Edit item - Business | Tabebiki</title>
+        
+        <!-- Character sets you can use -->
+        <meta charset="UTF-8">
+
+        <!-- Provides an HTTP header for the information/value of the content attribute -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- Setting the viewport to make your website look good on all devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!----
+            <meta name="keywords" content="tabebiki">  Helps your page able to be found by the keywords 
+        ---->
+        
+        <!-- General style css -->
+        <link rel="stylesheet" type="text/css" href="/Overall_style.css">
+
+        <!-- Specific style css -->
+        <link rel="stylesheet" type="text/css" href="/About_Page.css">
+
+        <!-- Free icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!-- Connect to this page before loading the page -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <!-- Connect to this page before loading the page -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <!-- Using the font in this page to style our page -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        <!----ABOUT HOW IT STARTED---->
+        <section class="about">
+            <!-- Describing Text -->
+            <div class="about-text">
+                <!-- About us heading -->
+                <h1>About our page</h1>
+
+                <!-- Describing our starting point -->
+                <p>Our page "Tabebiki" started from the two of us. We, at the time, were two juniors at the Aizu University.</p>
+
+                <!-- Describing how the idea became like this -->
+                <p>We had this idea when we talked about the aftermath of Fukushima nuclear accident</p>
+            </div>
+
+            <!-- Representing picture -->
+            <div class="we-img">
+                <!-- Image is important (not on mobile) -->
+                <img src="Two-people-talking.jpg" alt="We">
+            </div>
+        </section>
+
+        <!----ABOUT CURRENT DIRECTION---->
+        <section class="current-direction">
+            <!-- Describing picture -->
+            <div class="direction-img">
+                <!-- Image is important (not on mobile) -->
+                <img class="recycle" src="recycle-food.png" alt="recycle-logo">
+            </div>
+
+            <!-- Describing Text -->
+            <div class="direction-text">
+                <!-- Mission heading -->
+                <span>Our mission</span>
+
+                <!-- Our direction -->
+                <h2>Love food<br>Hate waste</h2>
+
+                <!-- Explain more about direction -->
+                <p>Each day tons of unconsumed food is wasted, let's join the campaign to minimize food wastage. </p>
+                
+                <!-- Redirect to about page -->
+                <a href="/about" class="btn">Learn more</a>
+            </div>
+        </section>
+        <!-- <form class="item" method="POST" enctype="multipart/form-data"> -->
+            <!-- Item picture -->
+            <!-- <div class="item-img-part"> -->
+                <!-- Input for picture -->
+                <!-- <div class="add-img-header"> -->
+                    <!-- Label -->
+                    <!-- <label class="heading" for="add-img">Add image</label> -->
+
+                    <!-- Picture input -->
+                    <!-- <input type="file" name="img" class="heading" id="add-img" accept="image/*" required> -->
+                <!-- </div> -->
+
+                <!-- Requirement for picture -->
+                <!-- <p>Warning: Please submit a picture not over 4MB</p> -->
+                
+                <!-- Picture currently display -->
+                <!-- <div class="img-added"> -->
+                    <!-- Picture currently -->
+                    <!-- <img id="img" src="/not-available.png" alt="Not available"> -->
+                <!-- </div> -->
+            <!-- </div> -->
+
+            <!-- Item data currently -->
+            <!-- <div class="item-format-part"> -->
+                <!-- Image picture name -->
+                <!-- <input type="text" name="image_name" id="image-name" hidden readonly> -->
+
+                <!-- Item name currently -->
+                <!-- <div class="item-data"> -->
+                    <!-- <label for="name">Item name:</label> -->
+                    <!-- <input type="text" name="itemName" id="name" placeholder="name" required> -->
+                <!-- </div> -->
+
+                <!-- Item quantity currently -->
+                <!-- <div class="item-data"> -->
+                    <!-- <label for="quantity">Quantity:</label> -->
+                    <!-- <input type="number" name="quantity" id="quantity" placeholder="quantity" min="1" required> -->
+                <!-- </div> -->
+
+                <!-- Item price currently -->
+                <!-- <div class="item-data"> -->
+                    <!-- <label for="price">Price:</label> -->
+                    <!-- <input type="number" name="price" id="price" placeholder="price" required> -->
+                <!-- </div> -->
+
+                <!-- Edited item -->
+                <!-- <input class="btn" type="submit" value="Change item"> -->
+
+                <!-- Delete item -->
+                <!-- <input class="btn red" id="delete" type="button" value="Delete item"> -->
+            <!-- </div> -->
+        <!-- </form> -->
+
+        <!----CONFIRM FORM---->
+        <!-- <div style="display: none;" class="pop-up"> -->
+            <!-- Delete form -->
+            <!-- <form method="POST" class="pop-up-form"> -->
+                <!-- <fieldset> -->
+                    <!-- Word display -->
+                    <!-- <h3>ARE YOU SURE YOU WANT TO DELETE IT?</h2> -->
+    
+                    <!-- <div class="pop-up-btn"> -->
+                        <!-- Yes button -->
+                        <!-- <input type="submit" class="btn red" value="YES"> -->
+
+                        <!-- No button -->
+                        <!-- <input type="button" class="btn" id="no" value="NO"> -->
+                    <!-- </div> -->
+                <!-- </fieldset> -->
+            <!-- </form> -->
+        <!-- </div> -->
+
+        <!----SCRIPTS---->
+        <script src="/Overall_function.js"></script>
+        <script src="/About_Page.js"></script>
+    </body>
+</html>

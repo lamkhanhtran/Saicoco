@@ -182,6 +182,16 @@ router.get( '/', function( request, response ) {                                
                                                                                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                                                                                                                 //
+router.get( '/about', function( request, response ) {                                                           //
+                                                                                                                //
+    response.sendFile(                                                                                          //
+        path.join( __dirname, '..', 'public', 'Page-v1', 'About_Page.html' )                                    //
+    );                                                                                                          //
+                                                                                                                //
+} );                                                                                                            //
+                                                                                                                //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                                                                                //
 router.get( '/access', function( request, response ) {                                                          //
                                                                                                                 //
     response.sendFile(                                                                                          //
@@ -266,7 +276,7 @@ router.get( '/business', function( request, response ) {                        
                 path.join( __dirname, '..', 'public', 'Page-v1', 'Business_Page.html' )                         //
             );                                                                                                  //
         else                                                                                                    //
-            response.redirect( './access?denied=1');                                                            //
+            response.redirect( '/access?denied=1' );                                                            //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
@@ -298,7 +308,7 @@ router.get( '/business/additem',                                                
                 path.join( __dirname, '..', 'public', 'Page-v1', 'Business_Add_Item_Page.html' )                //
             );                                                                                                  //
         else                                                                                                    //
-            response.redirect( './access?denied=1');                                                            //
+            response.redirect( '/access?denied=1' );                                                            //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
@@ -316,9 +326,13 @@ router.get( '/business/item',                                                   
     } ),                                                                                                        //
     function( request, response ) {                                                                             //
                                                                                                                 //
-    const sql = 'SELECT phonenumber FROM Sellers WHERE id=?';                                                   //
+    const sql = 'SELECT phonenumber FROM Items, Sellers '                                                       //
+              + 'WHERE Items.sellerId=Sellers.id AND Sellers.id=? AND Items.id=?';                              //
                                                                                                                 //
-    connection.execute( sql, [ request.query.uid ], function( error, result ) {                                 //
+    connection.execute( sql, [                                                                                  //
+        request.query.uid,                                                                                      //
+        request.query.iid                                                                                       //
+    ], function( error, result ) {                                                                              //
         if( error ) {                                                                                           //
             console.log( error );                                                                               //
             return;                                                                                             //
@@ -330,7 +344,7 @@ router.get( '/business/item',                                                   
                 path.join( __dirname, '..', 'public', 'Page-v1', 'Business_Edit_Item_Page.html' )               //
             );                                                                                                  //
         else                                                                                                    //
-            response.redirect( './access?denied=1' );                                                           //
+            response.redirect( '/access?denied=1' );                                                           //
     } );                                                                                                        //
                                                                                                                 //
 } );                                                                                                            //
